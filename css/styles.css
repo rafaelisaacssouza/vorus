@@ -112,7 +112,9 @@ ul {
   --font-heading: "Neulis", sans-serif;
   /* Texto comum (corpo, botões, labels): Poppins */
   --font-condensed: "Poppins", sans-serif;
-  /* Conteúdo de pet: Neulis e Millennial */
+  /* Conteúdo de pet: Neulis nos títulos (--font-heading) e Millennial nos
+     acentos. Texto corrido é Poppins, mesmo nas seções de pet.
+     --font-pet fica aqui pra quando algum bloco pedir a Neulis. */
   --font-pet: "Neulis", sans-serif;
   --font-script: "Millennial", cursive;
   --font-re: "Neulis", sans-serif;
@@ -1006,7 +1008,7 @@ body {
   transform: scale(1.05) rotate(var(--diff-tilt, 0deg));
 }
 .product-card__kicker {
-  font-family: var(--font-pet);
+  font-family: var(--font-condensed);
   font-weight: 800;
   font-size: var(--fs-eyebrow);
   letter-spacing: 0.14em;
@@ -1030,7 +1032,7 @@ body {
   padding: 5.6px 11.2px;
   border-radius: var(--radius-pill);
   background: var(--cor-pill-bg);
-  font-family: var(--font-pet);
+  font-family: var(--font-condensed);
   font-weight: 700;
   font-size: var(--fs-label-sm);
   letter-spacing: 0.08em;
@@ -1038,7 +1040,7 @@ body {
   color: var(--cor-vinho);
 }
 .product-card__desc {
-  font-family: var(--font-pet);
+  font-family: var(--font-body);
   font-size: var(--fs-body-sm);
   line-height: 1.5;
   color: var(--cor-texto-corpo);
@@ -1052,7 +1054,7 @@ body {
   border-top: 1px dashed rgba(92, 0, 26, 0.15);
 }
 .product-card__weight {
-  font-family: var(--font-pet);
+  font-family: var(--font-condensed);
   font-weight: 800;
   font-size: var(--fs-btn-sm);
   letter-spacing: 0.1em;
@@ -1328,37 +1330,43 @@ body {
   max-width: 569px;
   margin-inline: auto;
 }
-/* Conteúdo de pet em texto corrido: Neulis. */
-.feed-well__text .section-lead,
-.tribe__lead {
-  font-family: var(--font-pet);
-}
 /* Hashtag da comunidade: acento caligráfico (Millennial). */
 .tribe__hashtag {
   font-family: var(--font-script);
   font-weight: 400;
   font-size: var(--fs-hashtag);
   letter-spacing: 0;
+  /* A Millennial tem ascendentes e descendentes longos: line-height
+     folgado pra não cortar as pontas das letras. */
+  line-height: 1.5;
+  padding-bottom: 0.15em;
   color: rgba(255, 255, 255, 0.9);
   margin-top: 24px;
 }
 
 .tribe__grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 9.6px;
+  /* 5 posts; os cards quebram em linhas conforme a largura. O mínimo de
+     300px é o que o embed do Instagram precisa pra não cortar nada. */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
   width: 100%;
   margin-top: 48px;
 }
-.tribe__photo {
-  aspect-ratio: 1 / 1;
+/* Card do embed: o iframe do Instagram não tem altura automática, então a
+   altura vem daqui (a mídia é quadrada e o resto é cabeçalho/rodapé do
+   próprio embed). */
+.tribe__post {
+  height: 470px;
   border-radius: var(--radius-img);
   overflow: hidden;
+  background: var(--cor-branco);
 }
-.tribe__photo img {
+.tribe__post iframe {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border: 0;
 }
 
 /* =========================================================
@@ -2002,9 +2010,6 @@ body {
   .distributors__ideal {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .tribe__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 900px) {
@@ -2069,9 +2074,6 @@ body {
   }
   .distributors__ideal {
     grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  .tribe__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .hero__actions {
     flex-direction: column;
