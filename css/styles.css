@@ -998,7 +998,7 @@ body {
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.18));
-  transform: translateY(15%);
+  transform: translateY(22%);
   transition: transform 0.3s ease;
 }
 /* Mesmo sorteio de --diff-tilt dos diff-cards (js/diff-cards.js): no hover
