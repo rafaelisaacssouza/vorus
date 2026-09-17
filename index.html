@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vórus — Quem cuida, pede Vórus.</title>
+    <meta
+      name="description"
+      content="Vórus, a marca pet da Cacal: nutrição de qualidade para cães e gatos, com mais de 60 anos de experiência em nutrição animal."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400&family=Pacifico&family=Poppins:wght@900&family=Baloo+2:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- ============ Marquee 1 ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__item">
+          <p class="marquee__text">Quem cuida, pede Vórus</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Nutrição equilibrada para cães e gatos</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Uma marca CACAL · 60+ anos</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Sem farinha de penas</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Prebiótico MOS · Extrato de Yucca</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Ômegas 3 e 6</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <!-- duplicado para loop contínuo -->
+        <div class="marquee__item">
+          <p class="marquee__text">Quem cuida, pede Vórus</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Nutrição equilibrada para cães e gatos</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Uma marca CACAL · 60+ anos</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Sem farinha de penas</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Prebiótico MOS · Extrato de Yucca</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Ômegas 3 e 6</p>
+          <span class="marquee__star">★</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ Navigation ============ -->
+    <header class="header">
+      <div class="container header__inner">
+        <a href="#" class="header__logo" aria-label="Vórus — início">
+          <img src="assets/img/logo-vorus.png" alt="Vórus" />
+        </a>
+        <nav>
+          <ul class="nav__list">
+            <li><a class="nav__link" href="#produtos">Produtos</a></li>
+            <li><a class="nav__link" href="#diferenciais">Diferenciais</a></li>
+            <li><a class="nav__link" href="#historia">Nossa história</a></li>
+            <li><a class="nav__link" href="#tribo">Tribo Vórus</a></li>
+            <li><a class="nav__link" href="#distribuidores">Parceiros</a></li>
+          </ul>
+        </nav>
+        <a href="#produtos" class="btn btn--primary btn--pill-sm header__cta"
+          >Conheça a linha</a
+        >
+        <button
+          type="button"
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Abrir menu"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
+    </header>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-hidden="true">
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="#produtos">Produtos</a></li>
+        <li>
+          <a class="mobile-nav__link" href="#diferenciais">Diferenciais</a>
+        </li>
+        <li><a class="mobile-nav__link" href="#historia">Nossa história</a></li>
+        <li><a class="mobile-nav__link" href="#tribo">Tribo Vórus</a></li>
+        <li>
+          <a class="mobile-nav__link" href="#distribuidores">Parceiros</a>
+        </li>
+        <li>
+          <a
+            href="#produtos"
+            class="btn btn--primary btn--pill-sm mobile-nav__cta"
+            >Conheça a linha</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ============ Hero ============ -->
+    <!-- Estrutura em duas camadas independentes, igual ao elementor-*-2026-09-15.json:
+         1) .hero__row — flex row-reverse, min-height:100vh, só com a coluna de
+            arte (50% de largura). Como é a ÚNICA flex item, o row-reverse a
+            empurra pra ponta direita da SEÇÃO INTEIRA (sem container/padding),
+            então ela sangra até a borda real da viewport.
+         2) .hero__overlay — absolute, cobre a seção inteira, e é quem aplica o
+            .container (max-width + padding do site) pro texto. Como não é um
+            flex item do row, não disputa espaço com a arte — as duas camadas
+            simplesmente se sobrepõem, e cada uma responde à sua própria régua
+            (viewport inteiro vs. container com padding) de forma 100% fluida,
+            sem precisar de aspect-ratio nem de cálculo de largura manual. -->
+    <section class="hero" id="hero">
+      <img
+        class="hero__bg"
+        src="assets/img/hero-bg.png"
+        alt=""
+        aria-hidden="true"
+      />
+
+      <div class="hero__row">
+        <!-- Shadow e splash já vêm exportados no MESMO canvas da foto
+             (666x768) — basta sobrepor em width:100%. Só o path/fita tem
+             canvas maior (766x855) e usa offset + escala pra sangrar. -->
+        <div class="hero__deco" id="hero-art" aria-hidden="true">
+          <img
+            class="hero__shadow"
+            src="assets/icons/hero-shadows.svg"
+            alt=""
+          />
+          <img class="hero__ribbon" src="assets/icons/hero-path.svg" alt="" />
+          <img class="hero__paws" src="assets/img/hero-pet.webp" alt="" />
+          <img class="hero__splash" src="assets/icons/hero-splash.svg" alt="" />
+        </div>
+      </div>
+
+      <div class="hero__overlay">
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <div class="eyebrow eyebrow--dot hero__badge">
+              Uma marca CACAL · 60+ anos de nutrição animal
+            </div>
+            <h1 class="hero__heading">
+              Quem<br />
+              pede,<br />
+              <span class="re">RE</span><span class="pet">Pet.</span>
+            </h1>
+            <p class="hero__paragraph">
+              Quem ama, cuida. Quem cuida escolhe uma alimentação feita por quem
+              entende do assunto. A Vórus é produzida pela Cacal, que há mais de
+              60 anos transforma experiência em nutrição de qualidade. Com
+              ingredientes selecionados e formulações equilibradas, oferece a
+              nutrição e o cuidado que acompanham o seu pet em cada refeição.
+            </p>
+            <div class="hero__actions">
+              <a href="#produtos" class="btn btn--primary"
+                >Conheça a Linha Vórus →</a
+              >
+              <a href="#distribuidores" class="btn btn--outline-vinho"
+                >Seja um Revendedor</a
+              >
+            </div>
+            <p class="hero__tagline">Quem cuida, pede Vórus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Cuidar vai além de alimentar ============ -->
+    <section class="about" id="historia">
+      <div class="container about__inner">
+        <div class="about__text">
+          <div class="eyebrow">Nossa razão de existir</div>
+          <h2 class="section-heading about__heading">
+            Cuidar vai além de alimentar.
+          </h2>
+          <p class="section-lead">
+            Os pets fazem parte da família. Estão presentes na rotina,
+            compartilham momentos e transformam cada dia em uma nova lembrança.
+          </p>
+          <p class="section-lead">
+            Por isso, cada refeição é uma forma de cuidar.
+          </p>
+          <p class="section-lead">
+            A Vórus existe para transformar esse cuidado em nutrição de
+            qualidade. Com ingredientes selecionados e formulações equilibradas,
+            oferece uma alimentação completa para acompanhar o seu pet, refeição
+            após refeição.
+          </p>
+        </div>
+        <div class="about__art">
+          <!-- Palco da arte, no mesmo esquema do .hero__deco: uma caixa com
+               aspect-ratio fixo (755.871 x 621.873 = o canvas do laço, que é o
+               maior de todos e por isso define o enquadramento) e TODOS os
+               filhos medidos em % dela. Nada de px: a arte inteira encolhe e
+               cresce junto com a coluna.
+               Dentro, a estrutura do elementor-1678-2026-09-16.json: o laço e
+               a palavra são irmãos do card, fora dele, pra que o scale da
+               entrada do card não deforme o traço. -->
+          <div class="about__stage">
+            <div class="about__dog">
+              <!-- Recorte do card: é ele que tem overflow hidden + radius, pra
+                   cortar a foto (que é mais alta que o card) sem tocar no laço. -->
+              <div class="about__dog-clip">
+                <img
+                  class="about__dog-photo"
+                  src="assets/img/dog-section.png"
+                  alt="Cachorro border collie com a língua de fora, expressão alegre."
+                />
+              </div>
+            </div>
+
+            <!-- Laço (mesmo path do assets/icons/squiggle-dog.svg): tamanho
+                 fixo do Figma, preserveAspectRatio="none" e overflow visível,
+                 então sangra pra fora do card. Desenhado uma vez, percorrendo o
+                 path do começo ao fim em 1.8477s, só depois que o card termina
+                 de escalar. Sem pathLength: o dash é medido em px por
+                 js/about-reveal.js. -->
+            <svg
+              class="about__squiggle"
+              width="755.871"
+              height="621.873"
+              viewBox="0 0 755.871 621.873"
+              preserveAspectRatio="none"
+              overflow="visible"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                class="about__squiggle-path"
+                stroke="#F8ECD2"
+                stroke-width="16.8717"
+                stroke-linecap="round"
+                d="M8.43667 81.0723C19.1563 -11.4339 137.159 -8.82981 191.299 50.9581C217.359 79.7365 205.732 207.035 154.437 175.171C100.358 141.576 161.083 65.3192 195.179 51.1791C219.839 40.9524 244.636 28.8953 265.937 31.179C362.879 41.5722 376.206 229.715 517.19 210.927C545.903 207.101 571.092 201.719 592.001 179.637C637.36 131.732 608.624 93.4987 564.212 112.421C550.559 118.238 499.257 151.584 518.541 209.912C538.414 270.02 611.906 327.8 677.294 318.948C710.718 314.303 772.473 286.666 735.41 246.288C715.005 224.057 687.788 232.684 679.337 239.51C665.938 250.332 659.356 269.314 677.667 318.388C693.119 359.72 714.821 398.85 737.395 436.64C758.195 471.461 746.079 522.778 706.629 613.435"
+              />
+            </svg>
+
+            <!--
+              ANIMAL — traço animado revelando só dentro das letras.
+              As 12 letras viram um <clipPath>; as 5 linhas (dados reais do Figma Motion,
+              node 197:269 / 206:456, loop de 3404.891ms) ficam clipadas dentro dele.
+              Requisito: pathLength="1" nos 5 <path> das linhas.
+            -->
+            <svg
+              class="about__word"
+              viewBox="0 0 612 77"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <clipPath id="animalClip" clipPathUnits="userSpaceOnUse">
+                  <path
+                    d="M55.7208 58.1445H56.653V71.2887H52.8309C46.119 71.2887 41.6444 68.9581 39.5935 64.3903C35.9579 69.331 30.5511 72.4073 23.9324 72.4073C10.8814 72.4073 1 61.6869 1 47.5173C1 33.3477 10.8814 22.6273 23.9324 22.6273C29.8053 22.6273 34.746 25.051 38.2884 28.9663V23.7459H51.8987V54.3224C51.8987 56.7462 53.297 58.1445 55.7208 58.1445ZM26.6358 59.2632C33.3477 59.2632 38.2884 54.2292 38.2884 47.5173C38.2884 40.8054 33.3477 35.7715 26.6358 35.7715C20.0171 35.7715 15.0764 40.8054 15.0764 47.5173C15.0764 54.2292 20.0171 59.2632 26.6358 59.2632Z"
+                  />
+                  <path
+                    d="M111.572 58.1445H112.504V71.2887H108.682C99.0801 71.2887 94.1394 66.5344 94.1394 57.3055V45.28C94.1394 39.5003 90.5038 35.7715 85.0037 35.7715C79.1308 35.7715 75.1223 39.5935 75.1223 45.4664V71.2887H61.512V23.7459H75.1223V28.9663C78.7579 24.7714 83.6986 22.6273 89.5715 22.6273C100.478 22.6273 107.75 29.8053 107.75 40.7122V54.3224C107.75 56.7462 109.148 58.1445 111.572 58.1445Z"
+                  />
+                  <path
+                    d="M123.856 17.6866C119.102 17.6866 115.466 14.1442 115.466 9.29667C115.466 4.5424 119.102 1 123.856 1C128.704 1 132.339 4.5424 132.339 9.29667C132.339 14.1442 128.704 17.6866 123.856 17.6866ZM117.051 71.2887V23.7459H130.662V71.2887H117.051Z"
+                  />
+                  <path
+                    d="M218.585 58.1445H219.517V71.2887H215.695C206.093 71.2887 201.153 66.5344 201.153 57.3055V44.3478C201.153 39.2206 197.89 35.7715 192.949 35.7715C187.635 35.7715 184 39.3139 184 44.5342V71.2887H170.39V44.3478C170.39 39.2206 167.127 35.7715 162.186 35.7715C156.873 35.7715 153.237 39.3139 153.237 44.5342V71.2887H139.627V23.7459H153.237V28.7799C156.686 24.7714 161.254 22.6273 166.754 22.6273C173.559 22.6273 178.873 25.7036 181.763 30.8307C185.398 25.4239 190.805 22.6273 197.517 22.6273C207.864 22.6273 214.763 29.6189 214.763 40.2461V54.3224C214.763 56.7462 216.161 58.1445 218.585 58.1445Z"
+                  />
+                  <path
+                    d="M276.131 58.1445H277.063V71.2887H273.241C266.529 71.2887 262.054 68.9581 260.003 64.3903C256.368 69.331 250.961 72.4073 244.342 72.4073C231.291 72.4073 221.41 61.6869 221.41 47.5173C221.41 33.3477 231.291 22.6273 244.342 22.6273C250.215 22.6273 255.156 25.051 258.698 28.9663V23.7459H272.309V54.3224C272.309 56.7462 273.707 58.1445 276.131 58.1445ZM247.046 59.2632C253.757 59.2632 258.698 54.2292 258.698 47.5173C258.698 40.8054 253.757 35.7715 247.046 35.7715C240.427 35.7715 235.486 40.8054 235.486 47.5173C235.486 54.2292 240.427 59.2632 247.046 59.2632Z"
+                  />
+                  <path
+                    d="M334.305 58.1445H335.238V71.2887H331.416C324.704 71.2887 320.229 68.9581 318.178 64.3903C314.543 69.331 309.136 72.4073 302.517 72.4073C289.466 72.4073 279.585 61.6869 279.585 47.5173C279.585 33.3477 289.466 22.6273 302.517 22.6273C308.39 22.6273 313.331 25.051 316.873 28.9663V23.7459H330.483V54.3224C330.483 56.7462 331.882 58.1445 334.305 58.1445ZM305.221 59.2632C311.932 59.2632 316.873 54.2292 316.873 47.5173C316.873 40.8054 311.932 35.7715 305.221 35.7715C298.602 35.7715 293.661 40.8054 293.661 47.5173C293.661 54.2292 298.602 59.2632 305.221 59.2632Z"
+                  />
+                  <path
+                    d="M392.48 58.1445H393.413V71.2887H389.591C382.879 71.2887 378.404 68.9581 376.353 64.3903C372.718 69.331 367.311 72.4073 360.692 72.4073C347.641 72.4073 337.76 61.6869 337.76 47.5173C337.76 33.3477 347.641 22.6273 360.692 22.6273C366.565 22.6273 371.506 25.051 375.048 28.9663V23.7459H388.658V54.3224C388.658 56.7462 390.057 58.1445 392.48 58.1445ZM363.395 59.2632C370.107 59.2632 375.048 54.2292 375.048 47.5173C375.048 40.8054 370.107 35.7715 363.395 35.7715C356.777 35.7715 351.836 40.8054 351.836 47.5173C351.836 54.2292 356.777 59.2632 363.395 59.2632Z"
+                  />
+                  <path
+                    d="M432.839 58.1445H435.822V71.2887H432.093C424.915 71.2887 418.576 69.1446 413.263 65.4157C409.627 67.8395 405.712 69.7971 401.424 71.2887L396.203 60.3818C399.093 59.2632 401.89 57.7716 404.407 56.0936C399.652 48.9156 397.042 39.5935 397.042 29.0595C397.042 12.4662 404.78 3.05086 416.432 3.05086C427.619 3.05086 434.983 11.534 434.983 25.9832C434.983 36.7969 430.975 47.4241 423.89 55.814C426.593 57.3055 429.576 58.1445 432.839 58.1445ZM416.153 16.195C413.076 16.195 411.025 19.9239 411.025 28.0341C411.025 34.6528 412.331 40.7122 414.754 45.6529C418.67 39.8732 420.907 33.068 420.907 25.9832C420.907 19.6442 419.136 16.195 416.153 16.195Z"
+                  />
+                  <path
+                    d="M475.356 58.1445H478.339V71.2887H474.61C467.432 71.2887 461.093 69.1446 455.779 65.4157C452.144 67.8395 448.229 69.7971 443.94 71.2887L438.72 60.3818C441.61 59.2632 444.406 57.7716 446.923 56.0936C442.169 48.9156 439.559 39.5935 439.559 29.0595C439.559 12.4662 447.296 3.05086 458.949 3.05086C470.136 3.05086 477.5 11.534 477.5 25.9832C477.5 36.7969 473.491 47.4241 466.407 55.814C469.11 57.3055 472.093 58.1445 475.356 58.1445ZM458.669 16.195C455.593 16.195 453.542 19.9239 453.542 28.0341C453.542 34.6528 454.847 40.7122 457.271 45.6529C461.186 39.8732 463.424 33.068 463.424 25.9832C463.424 19.6442 461.652 16.195 458.669 16.195Z"
+                  />
+                  <path
+                    d="M517.873 58.1445H520.856V71.2887H517.127C509.949 71.2887 503.61 69.1446 498.296 65.4157C494.661 67.8395 490.745 69.7971 486.457 71.2887L481.237 60.3818C484.127 59.2632 486.923 57.7716 489.44 56.0936C484.686 48.9156 482.076 39.5935 482.076 29.0595C482.076 12.4662 489.813 3.05086 501.466 3.05086C512.652 3.05086 520.017 11.534 520.017 25.9832C520.017 36.7969 516.008 47.4241 508.923 55.814C511.627 57.3055 514.61 58.1445 517.873 58.1445ZM501.186 16.195C498.11 16.195 496.059 19.9239 496.059 28.0341C496.059 34.6528 497.364 40.7122 499.788 45.6529C503.703 39.8732 505.94 33.068 505.94 25.9832C505.94 19.6442 504.169 16.195 501.186 16.195Z"
+                  />
+                  <path
+                    d="M560.389 58.1445H563.372V71.2887H559.643C552.465 71.2887 546.126 69.1446 540.813 65.4157C537.177 67.8395 533.262 69.7971 528.974 71.2887L523.753 60.3818C526.643 59.2632 529.44 57.7716 531.957 56.0936C527.203 48.9156 524.592 39.5935 524.592 29.0595C524.592 12.4662 532.33 3.05086 543.982 3.05086C555.169 3.05086 562.533 11.534 562.533 25.9832C562.533 36.7969 558.525 47.4241 551.44 55.814C554.143 57.3055 557.127 58.1445 560.389 58.1445ZM543.703 16.195C540.626 16.195 538.576 19.9239 538.576 28.0341C538.576 34.6528 539.881 40.7122 542.304 45.6529C546.22 39.8732 548.457 33.068 548.457 25.9832C548.457 19.6442 546.686 16.195 543.703 16.195Z"
+                  />
+                  <path
+                    d="M602.906 58.1445H605.889V71.2887H602.16C594.982 71.2887 588.643 69.1446 583.329 65.4157C579.694 67.8395 575.779 69.7971 571.49 71.2887L566.27 60.3818C569.16 59.2632 571.957 57.7716 574.474 56.0936C569.719 48.9156 567.109 39.5935 567.109 29.0595C567.109 12.4662 574.846 3.05086 586.499 3.05086C597.686 3.05086 605.05 11.534 605.05 25.9832C605.05 36.7969 601.041 47.4241 593.957 55.814C596.66 57.3055 599.643 58.1445 602.906 58.1445ZM586.219 16.195C583.143 16.195 581.092 19.9239 581.092 28.0341C581.092 34.6528 582.397 40.7122 584.821 45.6529C588.736 39.8732 590.974 33.068 590.974 25.9832C590.974 19.6442 589.202 16.195 586.219 16.195Z"
+                  />
+                </clipPath>
+              </defs>
+
+              <g clip-path="url(#animalClip)" fill="none">
+                <path
+                  id="combo-line-1"
+                  pathLength="1"
+                  stroke="#FBFFA5"
+                  stroke-width="18"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M602.938 64.9998C581.269 64.9998 572.579 37.3384 576.425 19.6496L576.438 19.59C578.824 8.56727 594.814 6.36376 597.698 18.89C601.454 35.2015 592.351 50.6773 579.948 60.86C571.132 65.2619 561.853 66.1253 552.468 63.17C535.548 57.8121 530.582 34.9346 533.905 19.6491L533.918 19.59C536.386 8.41303 552.278 6.29731 555.178 18.89C558.934 35.2014 549.831 50.6772 537.428 60.86C528.975 67.7544 519.68 66.2485 509.958 63.17C492.311 57.6125 487.989 35.3183 491.395 19.6496L491.408 19.59C493.793 8.56966 509.774 6.36617 512.658 18.89C516.545 35.2992 508.162 51.377 494.918 60.86C486.463 66.9144 476.909 66.1691 467.438 63.17C459.874 60.7747 453.333 53.1747 450.598 45.84C447.494 37.6402 447.032 28.13 448.888 19.59C450.141 13.8022 453.662 10.3498 459.818 10.07C468.433 9.67839 471.683 19.0131 471.148 26.3C470.053 41.208 463.696 51.5842 452.398 60.86C441.563 65.789 435.907 66.6306 424.918 63.17C418.695 61.1993 414.352 55.8015 410.388 50.74C404.144 42.8399 404.365 28.8028 406.355 19.6493C407.591 13.9663 411.395 10.3401 417.298 10.07C421.256 9.89008 424.471 11.5267 426.328 14.98C434.654 30.5749 422.145 50.7885 409.878 60.86C402.849 66.0476 398.399 67.2864 388.937 64.4998L387.437 64.17C380.731 61.4107 383.745 45.0419 379.596 38.5211C371.237 28.6767 354.293 24.9313 349.188 34.545C333.932 59.9715 361.609 70.8983 378.188 57.545C381.298 55.0402 383.214 39.208 383.285 28.0211"
+                />
+                <path
+                  id="combo-line-2"
+                  pathLength="1"
+                  stroke="#FBFFA5"
+                  stroke-width="18"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M333.186 67.5659C330.186 66.0659 330.473 67.0839 329.186 65.125C324.767 58.2952 326.841 48.1132 321.345 39.4761C312.986 29.6317 296.042 25.8863 290.937 35.5C275.681 60.9265 303.358 71.8533 319.937 58.5C323.047 55.9952 324.963 40.163 325.034 28.9761"
+                />
+                <path
+                  id="combo-line-3"
+                  pathLength="1"
+                  stroke="#FBFFA5"
+                  stroke-width="18"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M274.437 66.4409C271.437 64.9409 271.724 65.9589 270.437 64C266.018 57.1702 268.092 46.9882 262.596 38.3511C253.475 28.9899 236.801 30.2764 232.306 39.5009C222.691 55.5253 236.671 72.1881 253.126 66.4409C256.543 65.2415 260.986 61.8558 264.096 59.3511C267.206 56.8463 266.213 39.038 266.285 27.8511"
+                />
+                <path
+                  id="combo-line-4"
+                  pathLength="1"
+                  stroke="#FBFFA5"
+                  stroke-width="18"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M147.139 66.3879C147.201 54.7079 147.242 43.0276 147.339 31.3479C147.369 26.5379 146.419 36.1179 147.339 36.5579C152.087 37.8384 177.066 20.7206 178.169 38.3579C178.349 43.0279 177.989 67.3679 177.969 67.3879C177.949 67.3979 177.639 43.2579 178.069 38.4579C181.264 26.717 209.86 26.4874 208.499 41.7579C208.839 44.9279 208.649 51.4079 208.899 54.6779C209.131 57.7137 209.153 61.7859 211.799 63.7879C214.304 65.6267 212.952 64.7122 215.937 65"
+                />
+                <path
+                  id="combo-line-5"
+                  pathLength="1"
+                  stroke="#FBFFA5"
+                  stroke-width="18"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M124.637 9V64.58C124.637 70.5 110.767 66.3591 104.827 62.9801C99.4572 58.9698 101.849 47.1002 101.517 41.3501C100.824 29.3489 88.6811 30.0661 79.5768 32.5401C78.2013 32.9159 69.7624 36.1683 69.3668 35.9501C68.4968 35.4601 69.2168 25.8701 69.1668 30.6401C69.0471 42.0585 70.4184 53.6459 68.9367 65C68.2408 68.664 59.6901 67.72 55.4367 67C52.4367 65.5 49.4634 64.2487 48.1767 62.2898C43.7574 55.4601 47.9327 44.1372 42.4368 35.5C33.3156 26.1389 16.6414 27.4253 12.1467 36.6498C2.53204 52.6742 16.5123 69.337 32.9667 63.5898C36.3842 62.3904 40.8269 59.0048 43.9368 56.5C47.0466 53.9952 46.0543 36.1869 46.1256 25"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Linha de produtos ============ -->
+    <section class="products" id="produtos">
+      <div class="container">
+        <div class="products__head">
+          <div class="eyebrow">Linha de produtos</div>
+          <h2 class="section-heading">O cuidado certo para o seu pet.</h2>
+          <p class="section-lead">
+            Cada pet é único. Mas todo cuidado começa da mesma forma: com uma
+            alimentação de qualidade. Por isso, a Vórus oferece três linhas de
+            produtos desenvolvidas para atender diferentes necessidades
+            nutricionais, com ingredientes selecionados e formulações
+            equilibradas para acompanhar cães e gatos em cada refeição.
+          </p>
+        </div>
+
+        <div class="products__grid">
+          <article class="product-card">
+            <div class="product-card__figure product-card__figure--premium">
+              <span class="product-card__badge">Cães adultos</span>
+              <img
+                src="assets/img/produto-premium.png"
+                alt="Embalagem Vórus Premium Frango e Arroz 15kg"
+              />
+            </div>
+            <p class="product-card__kicker">Frango e Arroz • 15 kg</p>
+            <h3 class="product-card__title">Vórus Premium</h3>
+            <div class="product-card__tags">
+              <span class="product-card__tag">20% proteína</span>
+              <span class="product-card__tag">Prebiótico (MOS)</span>
+              <span class="product-card__tag">Extrato de Yucca</span>
+              <span class="product-card__tag">Metionina</span>
+              <span class="product-card__tag">Sem corantes artificiais</span>
+            </div>
+            <p class="product-card__desc">
+              Mais desempenho nutricional, digestibilidade e melhor
+              aproveitamento dos nutrientes.
+            </p>
+            <div class="product-card__foot">
+              <span class="product-card__weight">📦 15 kg</span>
+              <a href="#" class="text-link">Conhecer produto →</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__figure product-card__figure--essencial">
+              <span class="product-card__badge">Cães adultos</span>
+              <img
+                src="assets/img/produto-essencial.png"
+                alt="Embalagem Vórus Essencial Carne e Cereais 15kg"
+              />
+            </div>
+            <p class="product-card__kicker">Carne e Cereais • 15 kg</p>
+            <h3 class="product-card__title">Vórus Essencial</h3>
+            <div class="product-card__tags">
+              <span class="product-card__tag">18% proteína</span>
+              <span class="product-card__tag">Ômegas 3 e 6</span>
+              <span class="product-card__tag">Minerais e Vitaminas</span>
+              <span class="product-card__tag">Sem corantes artificiais</span>
+              <span class="product-card__tag">Excelente custo-benefício</span>
+            </div>
+            <p class="product-card__desc">
+              Nutrição equilibrada para o dia a dia com a qualidade que seu pet
+              merece.
+            </p>
+            <div class="product-card__foot">
+              <span class="product-card__weight">📦 15 kg</span>
+              <a href="#" class="text-link">Conhecer produto →</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__figure product-card__figure--gatos">
+              <span class="product-card__badge">Gatos adultos</span>
+              <img
+                src="assets/img/produto-gatos.png"
+                alt="Embalagem Vórus Essencial Gatos Frango e Peixe 25kg"
+              />
+            </div>
+            <p class="product-card__kicker">Frango e Peixe • 25 kg</p>
+            <h3 class="product-card__title">Vórus Essencial Gatos</h3>
+            <div class="product-card__tags">
+              <span class="product-card__tag">26% proteína</span>
+              <span class="product-card__tag">Taurina</span>
+              <span class="product-card__tag">Controle urinário</span>
+              <span class="product-card__tag">Alta palatabilidade</span>
+              <span class="product-card__tag">Ômegas 3 e 6</span>
+              <span class="product-card__tag">Sem corantes artificiais</span>
+            </div>
+            <p class="product-card__desc">
+              Formulação específica para atender as necessidades dos felinos.
+            </p>
+            <div class="product-card__foot">
+              <span class="product-card__weight">📦 25 kg</span>
+              <a href="#" class="text-link">Conhecer produto →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Marquee 2 ============ -->
+    <div class="marquee marquee--laranja" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__item">
+          <p class="marquee__text">Alimentar bem é saber cuidar</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Feito com quem entende de nutrição animal</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Qualidade CACAL desde 1963</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">#EuEscolhiVórus</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <!-- duplicado para loop contínuo -->
+        <div class="marquee__item">
+          <p class="marquee__text">Alimentar bem é saber cuidar</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Feito com quem entende de nutrição animal</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">Qualidade CACAL desde 1963</p>
+          <span class="marquee__star">★</span>
+        </div>
+        <div class="marquee__item">
+          <p class="marquee__text">#EuEscolhiVórus</p>
+          <span class="marquee__star">★</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ Diferenciais ============ -->
+    <section class="differentials" id="diferenciais">
+      <img
+        class="differentials__bg"
+        src="assets/img/diferenciais-bg.png"
+        alt=""
+        aria-hidden="true"
+      />
+      <div class="container differentials__inner">
+        <div class="differentials__head">
+          <div class="eyebrow">Diferenciais</div>
+          <p class="differentials__kicker">Vai de Vórus</p>
+          <h2 class="section-heading">Por que escolher Vórus?</h2>
+        </div>
+
+        <div class="differentials__grid">
+          <div class="diff-card">
+            <div class="diff-card__underlay"></div>
+            <div class="diff-card__front">
+              <div class="diff-card__icon">
+                <img src="assets/icons/icon-proteina.svg" alt="" />
+              </div>
+              <h3 class="diff-card__title">Proteína de qualidade</h3>
+              <p class="diff-card__desc">
+                Ingredientes selecionados que auxiliam na manutenção da massa
+                muscular, energia e vitalidade.
+              </p>
+            </div>
+          </div>
+
+          <div class="diff-card">
+            <div class="diff-card__underlay"></div>
+            <div class="diff-card__front">
+              <div class="diff-card__icon">
+                <img src="assets/icons/icon-cuidado.svg" alt="" />
+              </div>
+              <h3 class="diff-card__title">Cuidado intestinal</h3>
+              <p class="diff-card__desc">
+                Com prebiótico MOS e Extrato de Yucca, auxilia no equilíbrio
+                intestinal e na redução do odor das fezes.
+              </p>
+            </div>
+          </div>
+
+          <div class="diff-card">
+            <div class="diff-card__underlay"></div>
+            <div class="diff-card__front">
+              <div class="diff-card__icon">
+                <img src="assets/icons/icon-pelos.svg" alt="" />
+              </div>
+              <h3 class="diff-card__title">Pelos mais saudáveis</h3>
+              <p class="diff-card__desc">
+                Ômegas 3 e 6 que contribuem para uma pele saudável e uma pelagem
+                mais bonita.
+              </p>
+            </div>
+          </div>
+
+          <div class="diff-card">
+            <div class="diff-card__underlay"></div>
+            <div class="diff-card__front">
+              <div class="diff-card__icon">
+                <img src="assets/icons/icon-formulacao.svg" alt="" />
+              </div>
+              <h3 class="diff-card__title">
+                Formulação pensada para o seu pet
+              </h3>
+              <p class="diff-card__desc">
+                Alimentos desenvolvidos com foco em qualidade nutricional e
+                melhor aproveitamento dos nutrientes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Vórus é da Cacal ============ -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats__head">
+          <div class="eyebrow eyebrow--on-dark">A força da CACAL</div>
+          <h2 class="section-heading section-heading--on-dark">
+            Vórus é da Cacal
+          </h2>
+          <p class="section-lead section-lead--on-dark">
+            Uma cooperativa com mais de 60 anos de experiência em nutrição
+            animal.
+          </p>
+          <p class="section-lead section-lead--on-dark">
+            A Vórus nasce desse conhecimento para cuidar de quem faz parte da
+            família.
+          </p>
+          <p class="section-lead section-lead--on-dark">
+            Porque alimentar é o primeiro passo, mas cuidar é oferecer
+            qualidade, confiança e bem-estar todos os dias.
+          </p>
+        </div>
+
+        <div class="stats__grid">
+          <div class="stat-card">
+            <img
+              class="stat-card__img"
+              src="assets/img/picturedog.webp"
+              alt=""
+            />
+            <div class="stat-card__number">
+              60<span class="stat-card__suffix">+</span>
+            </div>
+            <p class="stat-card__label">
+              anos de experiência em nutrição animal
+            </p>
+          </div>
+          <div class="stat-card">
+            <img
+              class="stat-card__img"
+              src="assets/img/ilustracao-filhote.png"
+              alt=""
+            />
+            <div class="stat-card__number">3</div>
+            <p class="stat-card__label">linhas de produtos</p>
+          </div>
+          <div class="stat-card">
+            <img
+              class="stat-card__img"
+              src="assets/img/ilustracao-gato.png"
+              alt=""
+            />
+            <div class="stat-card__number">
+              26<span class="stat-card__suffix">%</span>
+            </div>
+            <p class="stat-card__label">de proteína na linha Gatos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Alimentar bem ============ -->
+    <section class="feed-well">
+      <div class="container feed-well__inner">
+        <div class="feed-well__text">
+          <div class="eyebrow">Essa ração é animaaaaalll!</div>
+          <h2 class="feed-well__heading">
+            Alimentar bem é uma demonstração de carinho.
+          </h2>
+          <p class="section-lead">
+            Quem escolhe Vórus sabe que cuidar é oferecer uma alimentação
+            equilibrada, saborosa e produzida por quem entende de nutrição
+            animal.
+          </p>
+        </div>
+        <div class="feed-well__art">
+          <img
+            src="assets/img/gato-comendo-racao.png"
+            alt="Gato comendo ração Vórus — eu aaamo Vórus"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Tribo Vórus ============ -->
+    <section class="tribe" id="tribo">
+      <div class="container tribe__inner">
+        <div class="tribe__head">
+          <div class="eyebrow eyebrow--on-orange">Tribo Vórus</div>
+          <h2 class="section-heading section-heading--on-dark">
+            Seu pet faz parte da Tribo Vórus?
+          </h2>
+          <p class="tribe__lead">
+            Compartilhe uma foto usando a hashtag abaixo e apareça em nosso
+            mural.
+          </p>
+          <p class="tribe__hashtag">#EuEscolhiVórus</p>
+        </div>
+
+        <div class="tribe__grid">
+          <div class="tribe__photo">
+            <img
+              src="assets/img/tribo-foto-placeholder.png"
+              alt="Cachorro feliz recebendo carinho — foto da comunidade Tribo Vórus"
+            />
+          </div>
+          <div class="tribe__photo">
+            <img
+              src="assets/img/tribo-foto-placeholder.png"
+              alt="Cachorro feliz recebendo carinho — foto da comunidade Tribo Vórus"
+            />
+          </div>
+          <div class="tribe__photo">
+            <img
+              src="assets/img/tribo-foto-placeholder.png"
+              alt="Cachorro feliz recebendo carinho — foto da comunidade Tribo Vórus"
+            />
+          </div>
+          <div class="tribe__photo">
+            <img
+              src="assets/img/tribo-foto-placeholder.png"
+              alt="Cachorro feliz recebendo carinho — foto da comunidade Tribo Vórus"
+            />
+          </div>
+          <div class="tribe__photo">
+            <img
+              src="assets/img/tribo-foto-placeholder.png"
+              alt="Cachorro feliz recebendo carinho — foto da comunidade Tribo Vórus"
+            />
+          </div>
+          <div class="tribe__photo">
+            <img
+              src="assets/img/tribo-foto-placeholder.png"
+              alt="Cachorro feliz recebendo carinho — foto da comunidade Tribo Vórus"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Para distribuidores ============ -->
+    <section class="distributors" id="distribuidores">
+      <div class="container">
+        <div class="distributors__head">
+          <div class="eyebrow eyebrow--on-dark">Para distribuidores</div>
+          <h2 class="section-heading section-heading--on-dark">
+            Leve uma marca que o consumidor pede pelo nome.
+          </h2>
+          <p class="section-lead section-lead--on-dark">
+            A Vórus oferece todo o suporte para fortalecer suas vendas.
+          </p>
+        </div>
+
+        <p class="distributors__label">Ideal para</p>
+        <div class="distributors__ideal">
+          <div class="ideal-card">
+            <div class="ideal-card__icon">
+              <img src="assets/icons/icon-petshop.svg" alt="" />
+            </div>
+            <p class="ideal-card__title">Pet Shops</p>
+          </div>
+          <div class="ideal-card">
+            <div class="ideal-card__icon">
+              <img src="assets/icons/icon-agropecuaria.svg" alt="" />
+            </div>
+            <p class="ideal-card__title">Agropecuárias</p>
+          </div>
+          <div class="ideal-card">
+            <div class="ideal-card__icon">
+              <img src="assets/icons/icon-veterinaria.svg" alt="" />
+            </div>
+            <p class="ideal-card__title">Clínicas Veterinárias</p>
+          </div>
+          <div class="ideal-card">
+            <div class="ideal-card__icon">
+              <img src="assets/icons/icon-distribuidor.svg" alt="" />
+            </div>
+            <p class="ideal-card__title">Distribuidores</p>
+          </div>
+        </div>
+
+        <p class="distributors__label">Você recebe</p>
+        <div class="distributors__perks">
+          <div class="perk-card">
+            <h3 class="perk-card__title">Kit PDV</h3>
+            <p class="perk-card__desc">
+              Materiais desenvolvidos para valorizar a presença dos produtos na
+              loja.
+            </p>
+          </div>
+          <div class="perk-card">
+            <h3 class="perk-card__title">Campanhas de Marketing</h3>
+            <p class="perk-card__desc">
+              Conteúdos e ações para acompanhar a comunicação da marca.
+            </p>
+          </div>
+          <div class="perk-card">
+            <h3 class="perk-card__title">Suporte Comercial Cacal</h3>
+            <p class="perk-card__desc">
+              A experiência de uma cooperativa com mais de 60 anos de história.
+            </p>
+          </div>
+        </div>
+
+        <!-- Banner com máscara no hover: uma camada branca (::before) sobe de
+             baixo com translateY, e a cópia da camada de conteúdo, com as cores
+             invertidas, é revelada por clip-path no mesmo tempo e curva. Como
+             as duas medem em relação ao banner, a borda da máscara e o corte das
+             cores andam juntas. -->
+        <div class="distributors__banner">
+          <div class="distributors__banner-layer">
+            <div>
+              <h3 class="distributors__banner-heading">
+                Quero ser um Revendedor
+              </h3>
+              <p class="distributors__banner-text">
+                Fale com nossa equipe comercial e leve a Vórus para o seu ponto de
+                venda.
+              </p>
+            </div>
+            <a href="#" class="btn btn--white">Falar com o comercial →</a>
+          </div>
+          <!-- Cópia só visual (leitor de tela e mouse ignoram). -->
+          <div
+            class="distributors__banner-layer distributors__banner-layer--hover"
+            aria-hidden="true"
+          >
+            <div>
+              <p class="distributors__banner-heading">
+                Quero ser um Revendedor
+              </p>
+              <p class="distributors__banner-text">
+                Fale com nossa equipe comercial e leve a Vórus para o seu ponto de
+                venda.
+              </p>
+            </div>
+            <span class="btn btn--white">Falar com o comercial →</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA final ============ -->
+    <section class="final-cta">
+      <div class="container">
+        <div class="eyebrow eyebrow--on-dark">Essa ração é animaaaaalll!</div>
+        <h2 class="section-heading section-heading--on-dark">Vai de Vórus</h2>
+        <p class="section-lead section-lead--on-dark final-cta__lead">
+          Escolha a linha ideal para seu pet ou torne-se um parceiro comercial
+          da Vórus.
+        </p>
+        <div class="final-cta__actions">
+          <a href="#produtos" class="btn btn--primary">Conheça os Produtos →</a>
+          <a href="#distribuidores" class="btn btn--outline-white"
+            >Falar com o Comercial</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Footer ============ -->
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__col">
+          <img
+            class="footer__logo"
+            src="assets/img/logo-vorus.png"
+            alt="Vórus"
+          />
+          <p class="footer__tagline">Uma marca pet da Cacal.</p>
+          <p class="footer__lines">Linha Essencial • Premium • Gatos</p>
+          <div class="footer__badges">
+            <img
+              src="assets/img/logo-cacal.png"
+              alt="CACAL Cooperativa Agropecuária"
+            />
+            <img src="assets/img/logo-somos-coop.png" alt="Somos Coop" />
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__heading">Contato</p>
+          <div class="footer__list">
+            <div class="footer__list-item">
+              <img src="assets/icons/icon-telefone.svg" alt="" />
+              <span>(28) 3542-1387</span>
+            </div>
+            <a class="footer__list-item" href="mailto:contato@cacal.coop.br">
+              <img src="assets/icons/icon-email.svg" alt="" />
+              <span>contato@cacal.coop.br</span>
+            </a>
+            <a
+              class="footer__list-item"
+              href="https://cacal.coop.br"
+              target="_blank"
+              rel="noopener"
+            >
+              <img src="assets/icons/icon-site.svg" alt="" />
+              <span>cacal.coop.br</span>
+            </a>
+            <a
+              class="footer__list-item"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              <img src="assets/icons/icon-instagram.svg" alt="" />
+              <span>@cooperativacacal</span>
+            </a>
+            <a
+              class="footer__list-item"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              <img src="assets/icons/icon-instagram.svg" alt="" />
+              <span>@vorusbr</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__heading">Navegar</p>
+          <div class="footer__list">
+            <a class="footer__nav-link" href="#produtos">Produtos</a>
+            <a class="footer__nav-link" href="#diferenciais">Diferenciais</a>
+            <a class="footer__nav-link" href="#historia">Nossa história</a>
+            <a class="footer__nav-link" href="#tribo">Tribo Vórus</a>
+            <a class="footer__nav-link" href="#distribuidores"
+              >Seja um revendedor</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="footer__bottom">
+          <p class="footer__copy">
+            © 2026 Vórus · Uma marca pet da CACAL Cooperativa Agropecuária
+          </p>
+          <a class="footer__credit" href="#" target="_blank" rel="noopener">
+            <img src="assets/icons/icon-plimper.svg" alt="" />
+            <span>plimper</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ANIMAAAAALLL do footer: mesmo efeito da palavra da seção "sobre".
+           As letras de animal-footer.svg viram um <clipPath> e os traços de
+           Animaaal-path-footer.svg (clipados nelas) são desenhados em sequência
+           (keyframes footer-line-1..9). O container é centralizado e cresce de largura
+           junto com o desenho (js/footer-word.js acende .is-drawing). -->
+      <div class="footer__word" aria-hidden="true">
+        <!-- Caixa de altura fixa (a da palavra em 100%): o SVG cresce dentro dela
+             sem mudar a altura do footer. -->
+        <div class="footer__word-box">
+            <svg
+              class="footer__word-svg"
+              viewBox="0 0 1270 111"
+              preserveAspectRatio="xMinYMid slice"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <!-- Máscara: letras de animal-footer.svg -->
+                <clipPath id="footerAnimalClip" clipPathUnits="userSpaceOnUse">
+                  <path d="M84.6934 88.4226H86.1277V108.646H80.2471C69.9201 108.646 63.0355 105.06 59.88 98.0324C54.2862 105.634 45.9673 110.367 35.7838 110.367C15.7036 110.367 0.5 93.8729 0.5 72.0716C0.5 50.2702 15.7036 33.7758 35.7838 33.7758C44.8199 33.7758 52.4217 37.5049 57.872 43.529V35.4969H78.8128V82.542C78.8128 86.2711 80.9642 88.4226 84.6934 88.4226ZM39.9432 90.1437C50.2702 90.1437 57.872 82.3985 57.872 72.0716C57.872 61.7446 50.2702 53.9994 39.9432 53.9994C29.7597 53.9994 22.1579 61.7446 22.1579 72.0716C22.1579 82.3985 29.7597 90.1437 39.9432 90.1437Z" />
+                  <path d="M168.683 88.4226H170.117V108.646H164.237C149.463 108.646 141.861 101.331 141.861 87.1317V68.6292C141.861 59.7366 136.268 53.9994 127.805 53.9994C118.769 53.9994 112.602 59.88 112.602 68.9161V108.646H91.661V35.4969H112.602V43.529C118.196 37.0746 125.797 33.7758 134.833 33.7758C151.615 33.7758 162.802 44.8199 162.802 61.6012V82.542C162.802 86.2711 164.954 88.4226 168.683 88.4226Z" />
+                  <path d="M185.641 26.174C178.326 26.174 172.733 20.7236 172.733 13.2653C172.733 5.95034 178.326 0.5 185.641 0.5C193.1 0.5 198.693 5.95034 198.693 13.2653C198.693 20.7236 193.1 26.174 185.641 26.174ZM175.171 108.646V35.4969H196.112V108.646H175.171Z" />
+                  <path d="M329.448 88.4226H330.882V108.646H325.001C310.228 108.646 302.626 101.331 302.626 87.1317V67.1949C302.626 59.3063 297.606 53.9994 290.004 53.9994C281.829 53.9994 276.235 59.4497 276.235 67.4818V108.646H255.294V67.1949C255.294 59.3063 250.274 53.9994 242.673 53.9994C234.497 53.9994 228.903 59.4497 228.903 67.4818V108.646H207.963V35.4969H228.903V43.2421C234.21 37.0746 241.238 33.7758 249.701 33.7758C260.171 33.7758 268.347 38.5089 272.793 46.3976C278.387 38.0787 286.706 33.7758 297.033 33.7758C312.953 33.7758 323.567 44.533 323.567 60.884V82.542C323.567 86.2711 325.719 88.4226 329.448 88.4226Z" />
+                  <path d="M416.045 88.4226H417.479V108.646H411.598C401.271 108.646 394.387 105.06 391.231 98.0324C385.638 105.634 377.319 110.367 367.135 110.367C347.055 110.367 331.851 93.8729 331.851 72.0716C331.851 50.2702 347.055 33.7758 367.135 33.7758C376.171 33.7758 383.773 37.5049 389.223 43.529V35.4969H410.164V82.542C410.164 86.2711 412.316 88.4226 416.045 88.4226ZM371.295 90.1437C381.621 90.1437 389.223 82.3985 389.223 72.0716C389.223 61.7446 381.621 53.9994 371.295 53.9994C361.111 53.9994 353.509 61.7446 353.509 72.0716C353.509 82.3985 361.111 90.1437 371.295 90.1437Z" />
+                  <path d="M503.61 88.4226H505.044V108.646H499.164C488.837 108.646 481.952 105.06 478.796 98.0324C473.203 105.634 464.884 110.367 454.7 110.367C434.62 110.367 419.416 93.8729 419.416 72.0716C419.416 50.2702 434.62 33.7758 454.7 33.7758C463.736 33.7758 471.338 37.5049 476.788 43.529V35.4969H497.729V82.542C497.729 86.2711 499.881 88.4226 503.61 88.4226ZM458.86 90.1437C469.187 90.1437 476.788 82.3985 476.788 72.0716C476.788 61.7446 469.187 53.9994 458.86 53.9994C448.676 53.9994 441.074 61.7446 441.074 72.0716C441.074 82.3985 448.676 90.1437 458.86 90.1437Z" />
+                  <path d="M591.175 88.4226H592.609V108.646H586.729C576.402 108.646 569.517 105.06 566.362 98.0324C560.768 105.634 552.449 110.367 542.265 110.367C522.185 110.367 506.982 93.8729 506.982 72.0716C506.982 50.2702 522.185 33.7758 542.265 33.7758C551.301 33.7758 558.903 37.5049 564.354 43.529V35.4969H585.294V82.542C585.294 86.2711 587.446 88.4226 591.175 88.4226ZM546.425 90.1437C556.752 90.1437 564.354 82.3985 564.354 72.0716C564.354 61.7446 556.752 53.9994 546.425 53.9994C536.241 53.9994 528.64 61.7446 528.64 72.0716C528.64 82.3985 536.241 90.1437 546.425 90.1437Z" />
+                  <path d="M678.74 88.4226H680.174V108.646H674.294C663.967 108.646 657.082 105.06 653.927 98.0324C648.333 105.634 640.014 110.367 629.83 110.367C609.75 110.367 594.547 93.8729 594.547 72.0716C594.547 50.2702 609.75 33.7758 629.83 33.7758C638.867 33.7758 646.468 37.5049 651.919 43.529V35.4969H672.859V82.542C672.859 86.2711 675.011 88.4226 678.74 88.4226ZM633.99 90.1437C644.317 90.1437 651.919 82.3985 651.919 72.0716C651.919 61.7446 644.317 53.9994 633.99 53.9994C623.806 53.9994 616.205 61.7446 616.205 72.0716C616.205 82.3985 623.806 90.1437 633.99 90.1437Z" />
+                  <path d="M766.305 88.4226H767.74V108.646H761.859C751.532 108.646 744.647 105.06 741.492 98.0324C735.898 105.634 727.579 110.367 717.396 110.367C697.315 110.367 682.112 93.8729 682.112 72.0716C682.112 50.2702 697.315 33.7758 717.396 33.7758C726.432 33.7758 734.033 37.5049 739.484 43.529V35.4969H760.425V82.542C760.425 86.2711 762.576 88.4226 766.305 88.4226ZM721.555 90.1437C731.882 90.1437 739.484 82.3985 739.484 72.0716C739.484 61.7446 731.882 53.9994 721.555 53.9994C711.372 53.9994 703.77 61.7446 703.77 72.0716C703.77 82.3985 711.372 90.1437 721.555 90.1437Z" />
+                  <path d="M853.87 88.4226H855.305V108.646H849.424C839.097 108.646 832.212 105.06 829.057 98.0324C823.463 105.634 815.144 110.367 804.961 110.367C784.88 110.367 769.677 93.8729 769.677 72.0716C769.677 50.2702 784.88 33.7758 804.961 33.7758C813.997 33.7758 821.599 37.5049 827.049 43.529V35.4969H847.99V82.542C847.99 86.2711 850.141 88.4226 853.87 88.4226ZM809.12 90.1437C819.447 90.1437 827.049 82.3985 827.049 72.0716C827.049 61.7446 819.447 53.9994 809.12 53.9994C798.937 53.9994 791.335 61.7446 791.335 72.0716C791.335 82.3985 798.937 90.1437 809.12 90.1437Z" />
+                  <path d="M914.024 88.4226H918.613V108.646H912.876C901.832 108.646 892.079 105.347 883.903 99.6101C878.309 103.339 872.285 106.351 865.688 108.646L857.656 91.8649C862.102 90.1437 866.405 87.8489 870.277 85.2671C862.962 74.223 858.946 59.88 858.946 43.6724C858.946 18.1419 870.851 3.65545 888.78 3.65545C905.992 3.65545 917.322 16.7076 917.322 38.9392C917.322 55.5771 911.155 71.9281 900.254 84.8368C904.414 87.1317 909.004 88.4226 914.024 88.4226ZM888.35 23.8791C883.616 23.8791 880.461 29.6163 880.461 42.0947C880.461 52.2782 882.469 61.6012 886.198 69.203C892.222 60.3103 895.665 49.8399 895.665 38.9392C895.665 29.186 892.939 23.8791 888.35 23.8791Z" />
+                  <path d="M977.497 88.4226H982.087V108.646H976.35C965.305 108.646 955.552 105.347 947.377 99.6101C941.783 103.339 935.759 106.351 929.161 108.646L921.129 91.8649C925.575 90.1437 929.878 87.8489 933.751 85.2671C926.436 74.223 922.42 59.88 922.42 43.6724C922.42 18.1419 934.325 3.65545 952.253 3.65545C969.465 3.65545 980.796 16.7076 980.796 38.9392C980.796 55.5771 974.628 71.9281 963.728 84.8368C967.887 87.1317 972.477 88.4226 977.497 88.4226ZM951.823 23.8791C947.09 23.8791 943.934 29.6163 943.934 42.0947C943.934 52.2782 945.942 61.6012 949.672 69.203C955.696 60.3103 959.138 49.8399 959.138 38.9392C959.138 29.186 956.413 23.8791 951.823 23.8791Z" />
+                  <path d="M1040.97 88.4226H1045.56V108.646H1039.82C1028.78 108.646 1019.03 105.347 1010.85 99.6101C1005.26 103.339 999.232 106.351 992.634 108.646L984.602 91.8649C989.049 90.1437 993.352 87.8489 997.224 85.2671C989.909 74.223 985.893 59.88 985.893 43.6724C985.893 18.1419 997.798 3.65545 1015.73 3.65545C1032.94 3.65545 1044.27 16.7076 1044.27 38.9392C1044.27 55.5771 1038.1 71.9281 1027.2 84.8368C1031.36 87.1317 1035.95 88.4226 1040.97 88.4226ZM1015.3 23.8791C1010.56 23.8791 1007.41 29.6163 1007.41 42.0947C1007.41 52.2782 1009.42 61.6012 1013.14 69.203C1019.17 60.3103 1022.61 49.8399 1022.61 38.9392C1022.61 29.186 1019.89 23.8791 1015.3 23.8791Z" />
+                  <path d="M1104.44 88.4226H1109.03V108.646H1103.3C1092.25 108.646 1082.5 105.347 1074.32 99.6101C1068.73 103.339 1062.71 106.351 1056.11 108.646L1048.08 91.8649C1052.52 90.1437 1056.82 87.8489 1060.7 85.2671C1053.38 74.223 1049.37 59.88 1049.37 43.6724C1049.37 18.1419 1061.27 3.65545 1079.2 3.65545C1096.41 3.65545 1107.74 16.7076 1107.74 38.9392C1107.74 55.5771 1101.57 71.9281 1090.67 84.8368C1094.83 87.1317 1099.42 88.4226 1104.44 88.4226ZM1078.77 23.8791C1074.04 23.8791 1070.88 29.6163 1070.88 42.0947C1070.88 52.2782 1072.89 61.6012 1076.62 69.203C1082.64 60.3103 1086.08 49.8399 1086.08 38.9392C1086.08 29.186 1083.36 23.8791 1078.77 23.8791Z" />
+                  <path d="M1167.92 88.4226H1172.51V108.646H1166.77C1155.73 108.646 1145.97 105.347 1137.8 99.6101C1132.2 103.339 1126.18 106.351 1119.58 108.646L1111.55 91.8649C1116 90.1437 1120.3 87.8489 1124.17 85.2671C1116.86 74.223 1112.84 59.88 1112.84 43.6724C1112.84 18.1419 1124.74 3.65545 1142.67 3.65545C1159.88 3.65545 1171.22 16.7076 1171.22 38.9392C1171.22 55.5771 1165.05 71.9281 1154.15 84.8368C1158.31 87.1317 1162.9 88.4226 1167.92 88.4226ZM1142.24 23.8791C1137.51 23.8791 1134.35 29.6163 1134.35 42.0947C1134.35 52.2782 1136.36 61.6012 1140.09 69.203C1146.12 60.3103 1149.56 49.8399 1149.56 38.9392C1149.56 29.186 1146.83 23.8791 1142.24 23.8791Z" />
+                  <path d="M1231.39 88.4226H1235.98V108.646H1230.24C1219.2 108.646 1209.45 105.347 1201.27 99.6101C1195.68 103.339 1189.65 106.351 1183.05 108.646L1175.02 91.8649C1179.47 90.1437 1183.77 87.8489 1187.64 85.2671C1180.33 74.223 1176.31 59.88 1176.31 43.6724C1176.31 18.1419 1188.22 3.65545 1206.15 3.65545C1223.36 3.65545 1234.69 16.7076 1234.69 38.9392C1234.69 55.5771 1228.52 71.9281 1217.62 84.8368C1221.78 87.1317 1226.37 88.4226 1231.39 88.4226ZM1205.72 23.8791C1200.98 23.8791 1197.83 29.6163 1197.83 42.0947C1197.83 52.2782 1199.84 61.6012 1203.56 69.203C1209.59 60.3103 1213.03 49.8399 1213.03 38.9392C1213.03 29.186 1210.31 23.8791 1205.72 23.8791Z" />
+                  <path d="M1244.81 75.6573L1243.52 34.0626V9.67951H1265.6V34.0626L1264.31 75.6573H1244.81ZM1254.56 110.081C1246.67 110.081 1240.65 104.2 1240.65 96.3112C1240.65 88.566 1246.67 82.6854 1254.56 82.6854C1262.45 82.6854 1268.33 88.566 1268.33 96.3112C1268.33 104.2 1262.45 110.081 1254.56 110.081Z" />
+                </clipPath>
+              </defs>
+  
+              <!-- Traços: Animaaal-path-footer.svg, na ordem em que são desenhados -->
+              <g clip-path="url(#footerAnimalClip)" fill="none">
+                <path
+                  class="footer__line footer__line--1"
+                  pathLength="1"
+                  stroke-width="26.9989"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M186.947 15.4346V98.8012C186.947 107.681 166.143 101.47 157.234 96.4014C149.18 90.3863 152.766 72.5825 152.269 63.9577C151.23 45.9567 133.016 47.0324 119.36 50.7432C117.297 51.3069 104.639 56.1853 104.046 55.858C102.741 55.123 103.821 40.7386 103.746 47.8933C103.566 65.0204 105.623 82.4007 103.401 99.4312C102.357 104.927 89.5314 103.511 83.1516 102.431C78.6517 100.181 74.1919 98.3043 72.2619 95.3661C65.6333 85.1218 71.8959 68.1382 63.6524 55.183C49.9712 41.1418 24.9608 43.0714 18.2191 56.9076C3.79772 80.9432 24.7672 105.936 49.4478 97.316C54.5739 95.5169 61.2377 90.4387 65.9023 86.6817C70.5669 82.9247 69.0784 56.2132 69.1854 39.4336"
+                />
+                <path
+                  class="footer__line footer__line--2"
+                  pathLength="1"
+                  stroke-width="26.9989"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M220.699 101.512C220.792 83.9932 220.853 66.4735 220.999 48.9546C221.044 41.7399 219.619 56.1093 220.999 56.7693C228.12 58.69 265.587 33.0143 267.243 59.4691C267.513 66.4738 266.973 102.982 266.943 103.012C266.913 103.027 266.448 66.8188 267.093 59.6191C271.885 42.0085 314.776 41.6642 312.736 64.5689C313.246 69.3237 312.961 79.0433 313.336 83.9481C313.684 88.5017 313.716 94.6098 317.685 97.6126C321.442 100.371 319.414 98.9991 323.892 99.4307"
+                />
+                <path
+                  class="footer__line footer__line--3"
+                  pathLength="1"
+                  stroke-width="26.9989"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M411.639 101.593C407.139 99.3434 407.569 100.87 405.639 97.9321C399.01 87.6879 402.121 72.4155 393.877 59.4603C380.196 45.4191 355.186 47.3487 348.444 61.185C334.023 85.2205 354.992 110.214 379.673 101.593C384.799 99.7942 391.463 94.716 396.127 90.959C400.792 87.202 399.304 60.4906 399.411 43.7109"
+                />
+                <path
+                  class="footer__line footer__line--4"
+                  pathLength="1"
+                  stroke-width="26.9989"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M499.759 103.28C495.259 101.03 495.689 102.557 493.759 99.6186C487.131 89.3744 490.241 74.102 481.998 61.1468C469.46 46.3809 444.045 40.7629 436.387 55.183C413.504 93.3212 455.018 109.711 479.885 89.6815C484.55 85.9245 487.424 62.1771 487.531 45.3975"
+                />
+                <path
+                  class="footer__line footer__line--5"
+                  pathLength="1"
+                  stroke-width="26.9989"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M586.822 103.28C582.322 101.03 582.752 102.557 580.822 99.6186C574.194 89.3744 577.304 74.102 569.061 61.1468C556.523 46.3809 531.108 40.7629 523.45 55.183C500.567 93.3212 542.081 109.711 566.948 89.6815C571.613 85.9245 574.487 62.1771 574.594 45.3975"
+                />
+                <path
+                  class="footer__line footer__line--6"
+                  pathLength="1"
+                  stroke-width="26.9989"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M673.822 103.28C669.322 101.03 669.752 102.557 667.822 99.6186C661.194 89.3744 664.304 74.102 656.061 61.1468C643.523 46.3809 618.108 40.7629 610.45 55.183C587.567 93.3212 629.081 109.711 653.948 89.6815C658.613 85.9245 661.487 62.1771 661.594 45.3975"
+                />
+                <path
+                  class="footer__line footer__line--7"
+                  pathLength="1"
+                  stroke-width="26.9989"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M764.822 103.28C760.322 101.03 760.752 102.557 758.822 99.6186C752.194 89.3744 755.304 74.102 747.061 61.1468C734.523 46.3809 709.108 40.7629 701.45 55.183C678.567 93.3212 720.081 109.711 744.948 89.6815C749.613 85.9245 752.487 62.1771 752.594 45.3975"
+                />
+                <path
+                  class="footer__line footer__line--8"
+                  pathLength="1"
+                  stroke-width="28"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M839.594 46.4456C839.487 63.2252 836.613 86.9726 831.948 90.7297C807.081 110.759 765.567 94.3693 788.45 56.231C796.108 41.811 821.523 47.429 834.061 62.1949C840.284 71.9758 835.763 96.528 845.822 100.667L848.072 101.161C862.264 105.341 868.939 103.483 879.482 95.702C897.882 80.5953 916.644 50.2761 904.156 26.8848C901.37 21.7049 896.549 19.2502 890.611 19.52C881.757 19.9251 876.051 25.3642 874.198 33.8884C871.212 47.6181 870.881 68.6728 880.247 80.5226C886.192 88.1144 892.706 96.2109 902.041 99.1668C918.524 104.358 927.007 103.095 943.259 95.702C960.206 81.7888 969.741 66.2252 971.383 43.8641C972.186 32.9342 967.311 18.9327 954.389 19.52C945.155 19.9397 939.873 25.1182 937.994 33.7995C935.21 46.6089 935.904 60.8736 940.559 73.1729C944.661 84.1744 954.472 95.574 965.818 99.1668C980.024 103.665 994.354 104.783 1007.04 95.702C1026.9 81.4781 1039.48 57.3623 1033.65 32.7495C1029.32 13.9645 1005.35 17.2696 1001.77 33.7995L1001.75 33.8889C996.643 57.3909 1003.13 90.8309 1029.6 99.1668C1044.18 103.784 1058.12 106.043 1070.8 95.702C1089.4 80.4284 1103.06 57.2155 1097.42 32.7495C1093.07 13.8612 1069.24 17.0347 1065.53 33.7995L1065.52 33.888C1060.53 56.8154 1067.98 91.1302 1093.36 99.1668C1107.43 103.6 1121.35 102.305 1134.58 95.702C1153.18 80.4286 1166.83 57.2158 1161.2 32.7495C1156.87 13.9609 1132.89 17.266 1129.31 33.7995L1129.29 33.8889C1123.52 60.421 1136.59 103.321 1169.06 101.911C1179.58 101.455 1185.04 99.9797 1194.17 95.702C1212.78 80.4286 1226.43 57.2158 1220.8 32.7495C1216.47 13.9609 1192.49 17.266 1188.91 33.7995L1188.89 33.8889C1183.12 60.421 1196.15 101.911 1228.66 101.911"
+                />
+                <path
+                  class="footer__line footer__line--9"
+                  pathLength="1"
+                  stroke-width="28"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M1228.66 103C1237.7 109 1255.8 116.7 1255.8 99.5C1255.8 82.3 1255.8 35.3333 1255.8 14"
+                />
+              </g>
+            </svg>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/CustomEase.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/hero-burst.js"></script>
+    <script src="js/about-reveal.js"></script>
+    <script src="js/diff-cards.js"></script>
+    <script src="js/product-cards.js"></script>
+    <script src="js/footer-word.js"></script>
+    <script src="js/text-reveal.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

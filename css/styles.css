@@ -1,0 +1,2026 @@
+/* =========================================================
+   Vórus — Landing Page
+   Fonte: Figma (gTTOImD6FEb3FB2amaVUv1, node 121:129)
+   ========================================================= */
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: auto;
+}
+body {
+  min-height: 100%;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+ul {
+  list-style: none;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Cores */
+  --cor-creme: #fdf5e8;
+  --cor-creme-escuro: #f9eed4;
+  --cor-pill-bg: #f5e8c8;
+  --cor-vinho: #5c001a;
+  --cor-marrom-escuro: #3d1505;
+  --cor-laranja: #e35f10;
+  --cor-laranja-hover: #e46a21;
+  --cor-laranja-escuro: #c94e08;
+  --cor-texto-corpo: #6b5d52;
+  --cor-dourado: #d4900a;
+  --cor-branco: #ffffff;
+
+  /* Gradientes dos cards de produto */
+  --grad-premium: linear-gradient(161deg, #f2c68c 8.5%, #e39c4e 91.5%);
+  --grad-essencial: linear-gradient(161deg, #7ec3d6 8.5%, #3aa0bc 91.5%);
+  --grad-gatos: linear-gradient(161deg, #b7d89d 8.5%, #6baa48 91.5%);
+
+  /* Tipografia */
+  --font-heading: "Archivo Black", sans-serif;
+  --font-condensed: "Barlow Condensed", sans-serif;
+  --font-script: "Pacifico", cursive;
+  --font-re: "Poppins", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  /* Escala tipográfica fluida — clamp(mín @360px, fluido, máx @1366px) */
+  --fs-hero: clamp(36px, 22.48px + 3.754vw, 81.96px); /* -10% abaixo do máx */
+  --fs-hero-script: clamp(37.8px, 23.35px + 4.015vw, 86.88px); /* -10% abaixo do máx */
+  --fs-h2: clamp(32px, 21.69px + 2.863vw, 60.8px);
+  --fs-h3: clamp(20px, 17.42px + 0.716vw, 27.2px);
+  --fs-h4: clamp(16px, 15.14px + 0.239vw, 18.4px);
+  --fs-h4-sm: clamp(15px, 14.36px + 0.179vw, 16.8px);
+  --fs-h5: clamp(13px, 12.5px + 0.139vw, 14.4px);
+  --fs-body: clamp(15px, 14.36px + 0.179vw, 16.8px);
+  --fs-body-sm: clamp(14px, 13.57px + 0.119vw, 15.2px);
+  --fs-body-xs: clamp(13.5px, 13.06px + 0.121vw, 14.72px);
+  --fs-eyebrow: clamp(11.5px, 10.92px + 0.161vw, 13.12px);
+  --fs-label-sm: clamp(10.5px, 10.14px + 0.101vw, 11.52px);
+  --fs-marquee: clamp(12px, 10.86px + 0.318vw, 14px);
+  --fs-nav-link: clamp(13px, 12.5px + 0.139vw, 14.4px);
+  --fs-btn: clamp(13.5px, 12.89px + 0.169vw, 15.2px);
+  --fs-btn-sm: clamp(12.5px, 12.11px + 0.109vw, 13.6px);
+  --fs-stat-number: clamp(48px, 30.96px + 4.734vw, 95.62px);
+  --fs-stat-suffix: clamp(24px, 18.9px + 1.416vw, 38.248px);
+  --fs-hashtag: clamp(22px, 17.28px + 1.312vw, 35.2px);
+  --fs-footer-word: clamp(48px, 13.85px + 9.486vw, 143.43px);
+
+  /* Raios */
+  --radius-pill: 999px;
+  --radius-card: 32px;
+  --radius-card-sm: 24px;
+  --radius-img: 20px;
+
+  /* Layout */
+  --container-max: 1600px;
+  --container-pad: clamp(16px, 2.07px + 3.871vw, 64px);
+  --header-height: 78px;
+  --marquee-height: 36px;
+
+  /* Seções: padding vertical fluido */
+  --section-pad-y: clamp(48px, 24px + 5vw, 96px);
+  --section-pad-y-sm: clamp(40px, 22px + 4vw, 80px);
+}
+
+body {
+  font-family: var(--font-body);
+  font-variation-settings: "opsz" 14;
+  color: var(--cor-vinho);
+  background: var(--cor-creme);
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* ---------- Tipografia base ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 17.6px;
+  border-radius: var(--radius-pill);
+  background: var(--cor-pill-bg);
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cor-laranja);
+  white-space: nowrap;
+}
+.eyebrow--dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cor-laranja);
+  flex-shrink: 0;
+}
+.eyebrow--on-dark {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--cor-dourado);
+}
+.eyebrow--on-orange {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--cor-branco);
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h2);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  color: var(--cor-vinho);
+}
+.section-heading--on-dark {
+  color: var(--cor-branco);
+}
+
+.section-lead {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--cor-texto-corpo);
+}
+.section-lead--on-dark {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ---------- Botões / Links ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 25.6px;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  font-family: var(--font-condensed);
+  font-weight: 900;
+  font-size: var(--fs-btn);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+.btn--primary {
+  background: var(--cor-laranja);
+  color: var(--cor-branco);
+}
+.btn--primary:hover {
+  background: var(--cor-laranja-hover);
+  transform: translateY(-2px);
+}
+.btn--outline-vinho {
+  border-color: var(--cor-vinho);
+  color: var(--cor-vinho);
+}
+.btn--outline-vinho:hover {
+  background: var(--cor-vinho);
+  color: var(--cor-branco);
+}
+.btn--outline-white {
+  border-color: var(--cor-branco);
+  color: var(--cor-branco);
+}
+.btn--outline-white:hover {
+  background: var(--cor-branco);
+  color: var(--cor-vinho);
+}
+.btn--white {
+  background: var(--cor-branco);
+  color: var(--cor-laranja-escuro);
+}
+.btn--white:hover {
+  background: var(--cor-creme);
+  transform: translateY(-2px);
+}
+.btn--pill-sm {
+  padding: 11.2px 19.2px;
+  font-size: var(--fs-btn-sm);
+  font-weight: 900;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-condensed);
+  font-weight: 900;
+  font-size: var(--fs-btn-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-laranja);
+  transition: gap 0.25s ease;
+}
+.text-link:hover {
+  gap: 8px;
+}
+
+/* ---------- Marquees (CSS puro) ---------- */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--cor-vinho);
+}
+.marquee--laranja {
+  background: var(--cor-laranja);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 40px;
+  padding: 8px 0;
+  animation: marquee-scroll 34s linear infinite;
+}
+.marquee--laranja .marquee__track {
+  animation-duration: 26s;
+}
+.marquee__item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-shrink: 0;
+}
+.marquee__text {
+  font-family: var(--font-condensed);
+  font-weight: 900;
+  font-size: var(--fs-marquee);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cor-creme);
+  white-space: nowrap;
+}
+.marquee--laranja .marquee__text {
+  color: var(--cor-branco);
+}
+.marquee__star {
+  font-family: var(--font-condensed);
+  font-weight: 900;
+  font-size: var(--fs-marquee);
+  color: var(--cor-dourado);
+}
+.marquee--laranja .marquee__star {
+  color: var(--cor-branco);
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   Header / Navigation
+   ========================================================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cor-creme);
+  border-bottom: 1px solid rgba(92, 0, 26, 0.08);
+}
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 12.8px;
+}
+.header__logo {
+  flex-shrink: 0;
+  width: clamp(72px, 6vw, 94px);
+}
+.header__logo img {
+  width: 100%;
+  height: auto;
+}
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 35.2px);
+}
+.nav__link {
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: var(--fs-nav-link);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cor-marrom-escuro);
+  transition: color 0.2s ease;
+}
+.nav__link:hover {
+  color: var(--cor-laranja);
+}
+.header__cta {
+  flex-shrink: 0;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.nav-toggle__bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cor-vinho);
+  border-radius: 2px;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  top: var(--header-height);
+  z-index: 99;
+  background: var(--cor-creme);
+  padding: 32px var(--container-pad);
+  overflow-y: auto;
+}
+.mobile-nav.is-open {
+  display: block;
+}
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.mobile-nav__link {
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: clamp(20px, 5vw, 24px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-vinho);
+}
+.mobile-nav__cta {
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero {
+  position: relative;
+  background: var(--cor-creme);
+  overflow: hidden;
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Camada 1: linha flex só com a arte. row-reverse + um único item
+   empurra ela pra ponta direita da SEÇÃO INTEIRA (não do container com
+   padding) — sangra até a borda real da viewport sozinha, sem
+   position:absolute/top-right manual.
+   height (não min-height!) é o que dita a altura do hero inteiro — tem
+   que ser um valor "definido" pra .hero__deco poder resolver seu próprio
+   height:100% a partir daqui (min-height sozinho não conta como altura
+   definida pra fins de porcentagem em CSS, então a arte "escapava" pro
+   tamanho intrínseco do asset em vez de herdar os 100vh).
+   Descontando --header-height e --marquee-height (que ficam ACIMA do
+   hero, em fluxo normal, na ordem original: marquee → header → hero) o
+   total dos três bate exatamente 100vh — tudo cabe na tela sem precisar
+   rolar, sem precisar tirar o marquee do lugar dele. */
+.hero__row {
+  display: flex;
+  flex-direction: row-reverse;
+  height: calc(100vh - var(--header-height) - var(--marquee-height));
+}
+
+/* Camada 2: overlay absoluto (não disputa espaço com .hero__row) que
+   aplica o .container do site (max-width + padding) só pro texto. */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+.hero__overlay .hero__inner {
+  width: 100%;
+  pointer-events: none;
+}
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 50%;
+  max-width: 560px;
+  pointer-events: auto;
+}
+.hero__badge {
+  font-size: var(--fs-eyebrow);
+}
+.hero__heading {
+  font-family: var(--font-heading);
+  font-size: var(--fs-hero);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--cor-vinho);
+}
+.hero__heading .re {
+  font-family: var(--font-re);
+  font-weight: 900;
+}
+.hero__heading .pet {
+  font-family: var(--font-script);
+  font-weight: 400;
+  text-transform: none;
+  color: var(--cor-laranja);
+  font-size: var(--fs-hero-script);
+  letter-spacing: 0;
+}
+.hero__paragraph {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--cor-vinho);
+  max-width: 506px;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12.8px;
+}
+.hero__tagline {
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cor-vinho);
+}
+
+/* Camada decorativa do hero — estrutura do Elementor (elementor-*.json):
+   shadow, splash e a foto compartilham o MESMO canvas (666x768), então é
+   só sobrepor em inset:0 sem cálculo de posição por elemento. Só a fita
+   (path) tem canvas maior (766x855, pensado pra sangrar) e usa offset +
+   escala.
+   A ALTURA é quem manda aqui (height:100% do .hero__row, que tem
+   min-height:100vh) — a largura é derivada dela via aspect-ratio, nunca
+   o contrário. Isso é o que garante que tudo caiba nos 100vh: não
+   importa o quão larga a tela seja, a arte nunca cresce além da altura
+   disponível (e nunca fica "zoom" via object-fit:cover cortando a foto
+   pra preencher uma largura fixa de 50% que não bate com a proporção
+   real do asset). */
+.hero__deco {
+  position: relative;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 666 / 768;
+  overflow: hidden;
+  pointer-events: none;
+  /* z-index (não-auto) é o que faz este grupo criar seu PRÓPRIO contexto
+     de empilhamento — sem isso, os filhos com z-index negativo (sombra,
+     fita) "vazam" pra fora e competem com .hero__bg/.hero__overlay lá em
+     cima, em vez de ficarem contidos aqui dentro. */
+  z-index: 0;
+}
+
+/* z-index — mesma ordem do Figma/Elementor: sombra atrás de tudo, fita
+   atrás da foto, foto no fluxo normal (é ela quem define a altura do
+   grupo), splash (partículas) na frente da foto. */
+.hero__shadow {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -5;
+}
+.hero__ribbon {
+  position: absolute;
+  width: 100%;
+  /* Sem height/object-fit: cover aqui de propósito — o canvas da fita
+     (766x855) tem proporção DIFERENTE do resto (666x768), então forçar
+     height:100% + cover cortava a ponta de cima pra preencher uma caixa
+     com proporção errada. width:100% + height:auto deixa a própria
+     proporção do asset mandar, sem cortar nada. */
+  height: auto;
+  top: 9%;
+  right: -16%;
+  transform: scale(1.1);
+  z-index: -1;
+  /* Estado inicial da animação de "desenho" (js/hero-burst.js): clipado
+     de baixo pra cima, nada visível até a tween rodar. */
+  clip-path: inset(100% 0 0 0);
+}
+.hero__paws {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero__splash {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================================
+   Cuidar vai além de alimentar
+   ========================================================= */
+.about {
+  background: var(--cor-creme);
+  padding-block: var(--section-pad-y);
+}
+/* Linha do JSON: flex_direction row com flex_gap 0 e duas colunas de 50%
+   (só quebram em coluna no mobile, onde o Elementor também empilha). */
+.about__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+.about__text {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+.about__text .eyebrow {
+  margin-bottom: 14.4px;
+}
+.about__heading {
+  margin-bottom: 19.2px;
+  max-width: 480px;
+}
+.about__text p + p {
+  margin-top: 16px;
+}
+.about__text .section-lead {
+  max-width: 480px;
+}
+
+/* =========================================================
+   Arte da seção "Cuidar vai além de alimentar"
+   Estrutura e valores vindos de elementor-1678-2026-09-16.json:
+   linha de 2 colunas de 50% com gap 0; na coluna da direita
+   (itens centralizados) ficam o container "Dog BG" e, como IRMÃOS
+   absolutos, os dois widgets HTML (laço e palavra).
+   ========================================================= */
+/* A coluna só entrega a largura; quem manda na geometria é o palco. */
+.about__art {
+  position: relative;
+  flex: 0 1 50%;
+  align-self: center;
+}
+/* Palco: mesma ideia do .hero__deco. O canvas de referência é o do laço
+   (755.871 x 621.873), o maior dos três elementos — ele é quem define o
+   enquadramento. Largura 100% da coluna, altura derivada do aspect-ratio,
+   e todo filho posicionado em % DESTA caixa. Referência (unidades do
+   Figma, com o card em 580 x 588): card em x=72.5, y=0; laço em x=0, y=0;
+   palavra com 652.5 de largura, a 82.32 do pé do card. */
+.about__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 755.871 / 621.873;
+}
+/* Container "Dog BG DIV": 580/755.871 = 76.734% do palco, encostado no
+   topo, com a proporção 580/588 do JSON. O estado inicial (scale 0.8) é o
+   mesmo do JSON — quem anima daqui em diante é a timeline em
+   js/about-reveal.js.
+   O recorte da foto (overflow hidden) fica no .about__dog-clip. O laço e a
+   palavra são irmãos deste card no palco e ficam por cima dele. */
+.about__dog {
+  position: absolute;
+  top: 0;
+  left: 9.591%; /* 72.5 / 755.871 */
+  width: 76.734%; /* 580 / 755.871 */
+  aspect-ratio: 580 / 588;
+  margin: 0;
+  padding: 0;
+  background: var(--cor-laranja-hover);
+  border-radius: 16px; /* igual ao JSON; % aqui daria cantos elípticos */
+  transform: scale(0.8);
+}
+/* Laço: irmão do card no palco, como a palavra, pra não herdar o scale da
+   entrada do card. O canvas dele É o palco (755.871 x 621.873), então ocupa
+   a caixa inteira em x=0, y=0 e sangra pra fora do card dos dois lados,
+   como no Figma. A altura vem sozinha da proporção do próprio SVG. */
+.about__squiggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  max-width: none;
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+}
+/* O laço não usa pathLength: o dash é medido em px reais com
+   getTotalLength() em js/about-reveal.js, porque dash normalizado
+   (pathLength="1") depende do navegador aplicar a escala em valores vindos
+   do CSS/inline — quando não aplica, "1 1" vira um pontilhado de 1px e o
+   traço inteiro aparece de uma vez. Até a medição acontecer, fica oculto. */
+.about__squiggle-path {
+  visibility: hidden;
+}
+/* Recorte do card: herda a geometria e o radius e é quem tem overflow
+   hidden, cortando a foto (958x1350, mais alta que o card nos 75% de
+   largura) sem encostar no laço. column-reverse encosta a foto na base. */
+.about__dog-clip {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  border-radius: inherit;
+  overflow: hidden;
+}
+/* Widget de imagem: 75% da largura do card. O translate de entrada é em %
+   da própria imagem (275.244 / 613 de altura renderizada ≈ 44.9%), pra não
+   virar um salto fixo em px quando o card encolhe. */
+.about__dog-photo {
+  width: 75%;
+  height: auto;
+  transform: translateY(44.9%) scale(0.6);
+}
+/* Palavra: 86.325% do palco (652.5 / 755.871), centralizada e ancorada a
+   18.684% do pé (116.193 / 621.873). */
+.about__word {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 18.684%;
+  width: 86.325%;
+  height: auto;
+  display: block;
+  z-index: 2;
+  overflow: visible;
+}
+/* Palavra ANIMAL: as keyframes são as do example.html / Figma Motion
+   (kf_197_276..280, ciclo de 3.404891s), sem nenhuma adaptação — só
+   deixam de ser `infinite` e passam a rodar uma vez (`1 forwards`),
+   disparadas no fim do ATO 1 da timeline, com o laço (.is-drawing).
+   Requer pathLength="1" nos 5 paths do index.html. */
+#combo-line-1,
+#combo-line-2,
+#combo-line-3,
+#combo-line-4,
+#combo-line-5 {
+  visibility: hidden;
+}
+.about__art.is-drawing #combo-line-1 {
+  animation: kf_197_276 3.404891s linear 1 forwards;
+}
+.about__art.is-drawing #combo-line-2 {
+  animation: kf_197_277 3.404891s linear 1 forwards;
+}
+.about__art.is-drawing #combo-line-3 {
+  animation: kf_197_278 3.404891s linear 1 forwards;
+}
+.about__art.is-drawing #combo-line-4 {
+  animation: kf_197_279 3.404891s linear 1 forwards;
+}
+.about__art.is-drawing #combo-line-5 {
+  animation: kf_197_280 3.404891s linear 1 forwards;
+}
+@keyframes kf_197_276 {
+  0% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: -1;
+    visibility: hidden;
+  }
+  47.135% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: -1;
+    visibility: hidden;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 0;
+    visibility: visible;
+  }
+}
+@keyframes kf_197_277 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  38.288% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  47.135% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+@keyframes kf_197_278 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  29.441% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  38.288% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+@keyframes kf_197_279 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  20.595% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  29.441% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+@keyframes kf_197_280 {
+  0% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: -1;
+    visibility: hidden;
+  }
+  20.684% {
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 0;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 0;
+    visibility: visible;
+  }
+}
+/* Estado final imediato: sem GSAP (CDN fora do ar) ou com
+   prefers-reduced-motion, js/about-reveal.js marca .is-revealed. */
+.about__art.is-revealed .about__dog,
+.about__art.is-revealed .about__dog-photo {
+  transform: none;
+}
+.about__art.is-revealed .about__squiggle-path {
+  visibility: visible;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+}
+.about__art.is-revealed [id^="combo-line-"] {
+  visibility: visible;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 0;
+}
+
+/* =========================================================
+   Linha de produtos
+   ========================================================= */
+.products {
+  background: var(--cor-creme-escuro);
+  padding-block: var(--section-pad-y);
+}
+.products__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+  margin-bottom: clamp(32px, 4vw, 56px);
+}
+.products__head .eyebrow {
+  margin-bottom: 14.4px;
+}
+.products__head .section-heading {
+  margin-bottom: 19.2px;
+}
+.products__head .section-lead {
+  max-width: 690px;
+}
+
+.products__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.product-card {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  border-radius: var(--radius-card);
+  background: var(--cor-creme);
+}
+.product-card__figure {
+  position: relative;
+  aspect-ratio: 373 / 316;
+  border-radius: var(--radius-card-sm);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-card__figure--premium {
+  background: var(--grad-premium);
+}
+.product-card__figure--essencial {
+  background: var(--grad-essencial);
+}
+.product-card__figure--gatos {
+  background: var(--grad-gatos);
+}
+.product-card__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6.4px 12.8px;
+  border-radius: var(--radius-pill);
+  background: var(--cor-branco);
+  font-family: var(--font-condensed);
+  font-weight: 900;
+  font-size: var(--fs-label-sm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-vinho);
+  white-space: nowrap;
+}
+.product-card__figure img {
+  width: 55%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.18));
+  transform: translateY(15%);
+  transition: transform 0.3s ease;
+}
+/* Mesmo sorteio de --diff-tilt dos diff-cards (js/diff-cards.js): no hover
+   o pacote volta pro centro, cresce e ganha a inclinação sorteada. */
+.product-card:hover .product-card__figure img,
+.product-card:focus-within .product-card__figure img {
+  transform: scale(1.05) rotate(var(--diff-tilt, 0deg));
+}
+.product-card__kicker {
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cor-laranja);
+}
+.product-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h3);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--cor-vinho);
+}
+.product-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.product-card__tag {
+  padding: 5.6px 11.2px;
+  border-radius: var(--radius-pill);
+  background: var(--cor-pill-bg);
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: var(--fs-label-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cor-vinho);
+}
+.product-card__desc {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  line-height: 1.5;
+  color: var(--cor-texto-corpo);
+  flex-grow: 1;
+}
+.product-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(92, 0, 26, 0.15);
+}
+.product-card__weight {
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: var(--fs-btn-sm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-texto-corpo);
+}
+
+/* =========================================================
+   Diferenciais
+   ========================================================= */
+.differentials {
+  position: relative;
+  background: var(--cor-creme);
+  padding-block: var(--section-pad-y);
+  overflow: hidden;
+}
+.differentials__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.differentials__inner {
+  position: relative;
+  z-index: 1;
+}
+.differentials__head {
+  max-width: 760px;
+}
+.differentials__head .eyebrow {
+  margin-bottom: 16px;
+}
+.differentials__kicker {
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: clamp(15px, 1.2vw, 17.6px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cor-vinho);
+  margin-bottom: 14.4px;
+}
+.differentials__head .section-heading {
+  margin-bottom: 0;
+}
+
+.differentials__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* 24px pra bater com o padding interno do card e com os outros grids
+     da página (produtos, distribuidores). */
+  gap: 24px;
+  max-width: 760px;
+  margin-top: 35.2px;
+}
+/* A altura vem do conteúdo, não de um valor fixo: o card é um item de
+   grid (stretch), então os dois cards de uma mesma linha ficam com a
+   mesma altura, e o texto mais longo empurra a linha inteira em vez de
+   vazar pra fora da caixa. Os 216px do Figma viram piso, não teto. */
+.diff-card {
+  position: relative;
+  display: flex;
+}
+/* Camada laranja: fica ATRÁS, ocupando o card inteiro — é ela que aparece
+   por baixo quando a frente sobe 10px no hover. */
+.diff-card__underlay {
+  position: absolute;
+  inset: 0;
+  background: var(--cor-laranja);
+  border-radius: 28px;
+}
+.diff-card__front {
+  position: relative;
+  flex: 1;
+  min-height: 216px;
+  border-radius: 28px;
+  background: #fdefe7;
+  backdrop-filter: blur(4px);
+  box-shadow: 0px 14px 17px rgba(92, 0, 26, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+/* A inclinação é sorteada a cada hover por js/diff-cards.js, que escreve
+   --diff-tilt (entre -2deg e 3deg) no .diff-card. Sem JS, o fallback 0deg
+   deixa o hover exatamente como era. */
+.diff-card:hover .diff-card__front,
+.diff-card:focus-within .diff-card__front {
+  transform: translateY(-10px) rotate(var(--diff-tilt, 0deg));
+  box-shadow: 0px 20px 24px rgba(92, 0, 26, 0.5);
+}
+.diff-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--cor-laranja);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.diff-card__icon img {
+  width: 24px;
+  height: 24px;
+}
+.diff-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h4);
+  /* Sem isso o título herdava o line-height do corpo (1.5), que em caixa
+     alta e duas linhas abria um vão grande entre elas. */
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--cor-vinho);
+}
+.diff-card__desc {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  line-height: 1.5;
+  color: var(--cor-texto-corpo);
+}
+
+/* =========================================================
+   Vórus é da Cacal (stats)
+   ========================================================= */
+.stats {
+  background: var(--cor-vinho);
+  padding-block: var(--section-pad-y);
+}
+.stats__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 820px;
+  margin-inline: auto;
+}
+.stats__head .eyebrow {
+  margin-bottom: 14.4px;
+}
+.stats__head .section-heading {
+  margin-bottom: 19.2px;
+}
+.stats__head p {
+  max-width: 690px;
+}
+.stats__head p + p {
+  margin-top: 16px;
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 56px;
+}
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9.6px;
+  padding: 32px 16px;
+  border-radius: var(--radius-card);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.stat-card__img {
+  width: clamp(96px, 12vw, 170px);
+  height: clamp(96px, 12vw, 170px);
+  object-fit: contain;
+  /* Tinge as 3 ilustrações de laranja, seja qual for a cor original. */
+  filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-15deg)
+    brightness(1.05);
+}
+.stat-card__number {
+  display: flex;
+  align-items: flex-start;
+  font-family: var(--font-heading);
+  font-size: var(--fs-stat-number);
+  letter-spacing: -0.02em;
+  color: var(--cor-laranja);
+  line-height: 0.9;
+}
+.stat-card__suffix {
+  font-family: var(--font-heading);
+  font-size: var(--fs-stat-suffix);
+  color: var(--cor-branco);
+  margin-top: 0.15em;
+}
+.stat-card__label {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: var(--fs-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  text-align: center;
+}
+
+/* =========================================================
+   Alimentar bem
+   ========================================================= */
+.feed-well {
+  background: var(--cor-creme-escuro);
+  padding-block: clamp(40px, 6vw, 80px);
+}
+.feed-well__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.feed-well__text {
+  flex: 1 1 380px;
+  max-width: 568px;
+}
+.feed-well__text .eyebrow {
+  margin-bottom: 14.4px;
+}
+.feed-well__heading {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h2);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  color: var(--cor-vinho);
+  margin-bottom: 19.2px;
+}
+.feed-well__text .section-lead {
+  max-width: 593px;
+}
+.feed-well__art {
+  flex: 1 1 360px;
+  max-width: 536px;
+}
+.feed-well__art img {
+  width: 100%;
+  aspect-ratio: 536 / 544;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+}
+
+/* =========================================================
+   Tribo Vórus
+   ========================================================= */
+.tribe {
+  background: var(--cor-laranja);
+  padding-block: var(--section-pad-y);
+}
+.tribe__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.tribe__head .eyebrow--on-orange {
+  margin-bottom: 14.4px;
+}
+.tribe__head .section-heading {
+  margin-bottom: 19.2px;
+}
+.tribe__lead {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 569px;
+  margin-inline: auto;
+}
+.tribe__hashtag {
+  font-family: var(--font-heading);
+  font-size: var(--fs-hashtag);
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 24px;
+}
+
+.tribe__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 9.6px;
+  width: 100%;
+  margin-top: 48px;
+}
+.tribe__photo {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-img);
+  overflow: hidden;
+}
+.tribe__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================================
+   Para distribuidores
+   ========================================================= */
+.distributors {
+  background: var(--cor-marrom-escuro);
+  padding-block: var(--section-pad-y);
+}
+.distributors__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.distributors__head .eyebrow--on-dark {
+  margin-bottom: 14.4px;
+}
+.distributors__head .section-heading {
+  max-width: 1000px;
+  margin-bottom: 19.2px;
+}
+.distributors__head .section-lead {
+  max-width: 690px;
+}
+
+.distributors__label {
+  text-align: center;
+  font-family: var(--font-condensed);
+  font-weight: 900;
+  font-size: var(--fs-h5);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cor-dourado);
+  margin-top: 48px;
+  margin-bottom: 24px;
+}
+
+.distributors__ideal {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.ideal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 25.6px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.ideal-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--cor-laranja);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ideal-card__icon img {
+  width: 22px;
+  height: 22px;
+}
+.ideal-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h4-sm);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cor-branco);
+}
+
+.distributors__perks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.perk-card {
+  padding: 28.8px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.perk-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h4-sm);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cor-laranja);
+  margin-bottom: 8px;
+}
+.perk-card__desc {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-xs);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+/* Banner "Quero ser um Revendedor", com máscara no hover.
+   - ::before é a máscara branca, do tamanho do banner, parada logo abaixo
+     dele (translateY 100%) e escondida pelo overflow hidden.
+   - .distributors__banner-layer--hover é a cópia do conteúdo com as cores
+     invertidas (o que era laranja vira branco e vice-versa), cortada por
+     clip-path a partir de baixo.
+   No hover as duas andam juntas, com a mesma duração e curva: a máscara
+   sobe e o corte abre na mesma altura, então a troca de cor acompanha a
+   borda da máscara. */
+.distributors__banner {
+  --banner-wipe: 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 48px;
+  border-radius: var(--radius-card);
+  background: var(--cor-laranja);
+}
+.distributors__banner::before {
+  content: "";
+  position: absolute;
+  /* 2px abaixo do banner: some com a bordinha laranja que aparecia. */
+  inset: 2px 0 -2px 0;
+  z-index: 0;
+  border-radius: var(--radius-card);
+  background: var(--cor-branco);
+  transform: translateY(100%);
+  transition: transform var(--banner-wipe);
+}
+.distributors__banner-layer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 48px;
+}
+.distributors__banner-layer--hover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path var(--banner-wipe);
+}
+.distributors__banner:hover::before,
+.distributors__banner:focus-within::before {
+  transform: translateY(0);
+}
+.distributors__banner:hover .distributors__banner-layer--hover,
+.distributors__banner:focus-within .distributors__banner-layer--hover {
+  clip-path: inset(0 0 0 0);
+}
+.distributors__banner-heading {
+  font-family: var(--font-heading);
+  font-weight: 400; /* h3 na original, p na cópia: peso igual nas duas */
+  font-size: clamp(24px, 2.4vw, 38.4px);
+  text-transform: uppercase;
+  color: var(--cor-branco);
+  margin-bottom: 9.6px;
+}
+.distributors__banner-text {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 482px;
+}
+/* Cores invertidas da cópia. */
+.distributors__banner-layer--hover .distributors__banner-heading,
+.distributors__banner-layer--hover .distributors__banner-text {
+  color: var(--cor-laranja);
+}
+.distributors__banner-layer--hover .btn--white {
+  background: var(--cor-laranja);
+  color: var(--cor-branco);
+}
+/* A cópia não recebe mouse, então espelha o hover do botão de verdade. */
+.distributors__banner:has(.btn--white:hover) .distributors__banner-layer--hover .btn--white {
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .distributors__banner {
+    --banner-wipe: 0.01s linear;
+  }
+}
+
+/* =========================================================
+   CTA final
+   ========================================================= */
+.final-cta {
+  background: var(--cor-vinho);
+  padding-block: var(--section-pad-y);
+  text-align: center;
+}
+.final-cta .eyebrow--on-dark {
+  margin-bottom: 14.4px;
+}
+.final-cta .section-heading {
+  margin-bottom: 19.2px;
+}
+.final-cta__lead {
+  max-width: 598px;
+  margin-inline: auto;
+}
+.final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.footer {
+  background: var(--cor-vinho);
+  padding-top: 80px;
+}
+.footer__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.footer__col {
+  flex: 1 1 240px;
+}
+.footer__logo {
+  width: 108px;
+  height: auto;
+  margin-bottom: 19.2px;
+}
+.footer__tagline {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-xs);
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 16px;
+}
+.footer__lines {
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: var(--fs-body-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 22.4px;
+}
+.footer__badges {
+  display: flex;
+  align-items: center;
+  gap: 25.6px;
+}
+.footer__badges img {
+  height: 48px;
+  width: auto;
+}
+
+.footer__heading {
+  font-family: var(--font-condensed);
+  font-weight: 900;
+  font-size: var(--fs-h5);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cor-laranja);
+  margin-bottom: 16px;
+}
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 9.6px;
+}
+.footer__list-item {
+  display: flex;
+  align-items: center;
+  gap: 9.6px;
+  font-family: var(--font-body);
+  font-size: var(--fs-body-xs);
+  color: rgba(255, 255, 255, 0.78);
+}
+.footer__list-item img {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.footer__nav-link {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-xs);
+  color: rgba(255, 255, 255, 0.78);
+  transition: color 0.2s ease;
+}
+.footer__nav-link:hover {
+  color: var(--cor-branco);
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 64px;
+  padding: 24px 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer__copy {
+  font-family: var(--font-body);
+  font-size: var(--fs-label-sm);
+  color: rgba(255, 255, 255, 0.55);
+}
+.footer__credit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: var(--fs-label-sm);
+  color: var(--cor-branco);
+}
+.footer__credit img {
+  width: 16px;
+  height: 16px;
+}
+
+/* ANIMAAAAALLL do footer. A caixa (.footer__word-box) tem altura fixa, a
+   da palavra em largura total (proporção 1270/111), pra que o crescimento
+   não mexa na altura do footer. Dentro dela o SVG é centralizado e começa
+   estreito; quando js/footer-word.js acende .is-drawing, a largura cresce
+   até 100% no mesmo tempo das keyframes dos traços (4.6127s). */
+.footer__word {
+  --footer-word-cycle: 4.6127s;
+  padding-inline: var(--container-pad);
+  padding-bottom: 20px;
+  opacity: 0.9;
+}
+.footer__word-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1270 / 111;
+}
+/* Altura fixa (100% da caixa) e só a largura cresce. Com
+   preserveAspectRatio="xMinYMid slice" a palavra mantém o tamanho final o
+   tempo todo, presa na borda esquerda do container (que é centralizado e
+   abre pros dois lados): o "a" já aparece no início e o fim da palavra vai
+   sendo revelado à direita, na mesma ordem do desenho. */
+.footer__word-svg {
+  display: block;
+  flex: none;
+  width: 55%;
+  height: 100%;
+  overflow: hidden;
+  transition: width var(--footer-word-cycle) cubic-bezier(0.33, 0, 0.2, 1);
+}
+.footer__word.is-drawing .footer__word-svg,
+.footer__word.is-revealed .footer__word-svg {
+  width: 100%;
+}
+.footer__word.is-revealed .footer__word-svg,
+.footer__word.is-resetting .footer__word-svg {
+  transition: none;
+}
+.footer__line {
+  stroke: var(--cor-laranja-escuro); /* #C94E08 */
+  visibility: hidden;
+}
+/* Traços do Animaaal-path-footer.svg, na ordem do desenho (1 = i-n-a,
+   8 = a + lll, 9 = "!"). O "!" era um subpath do último traço e, com
+   pathLength, o navegador reinicia o dash em cada subpath, fazendo ele
+   aparecer antes da hora; por isso virou um traço separado, depois do L.
+   Cada letra leva 0.3s com ease-out e o traço dos L 1.8s; total 4.6127s. */
+.footer__word.is-drawing .footer__line--1 {
+  animation: footer-line-1 var(--footer-word-cycle) linear 1 forwards;
+}
+/* O traço de "ani" no arquivo começa no "i" e vai pro "a". Pra desenhar na
+   ordem a → n → i, ele é revelado de trás pra frente: o dash começa
+   deslocado pro fim (offset -1) e volta até 0. */
+@keyframes footer-line-1 {
+  0% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: -1;
+    visibility: hidden;
+  }
+  15.269% {
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 0;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    stroke-dashoffset: 0;
+    visibility: visible;
+  }
+}
+.footer__word.is-drawing .footer__line--2 {
+  animation: footer-line-2 var(--footer-word-cycle) linear 1 forwards;
+}
+@keyframes footer-line-2 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  15.269% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  21.799% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+.footer__word.is-drawing .footer__line--3 {
+  animation: footer-line-3 var(--footer-word-cycle) linear 1 forwards;
+}
+@keyframes footer-line-3 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  21.799% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  28.328% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+.footer__word.is-drawing .footer__line--4 {
+  animation: footer-line-4 var(--footer-word-cycle) linear 1 forwards;
+}
+@keyframes footer-line-4 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  28.328% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  34.858% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+.footer__word.is-drawing .footer__line--5 {
+  animation: footer-line-5 var(--footer-word-cycle) linear 1 forwards;
+}
+@keyframes footer-line-5 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  34.858% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  41.388% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+.footer__word.is-drawing .footer__line--6 {
+  animation: footer-line-6 var(--footer-word-cycle) linear 1 forwards;
+}
+@keyframes footer-line-6 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  41.388% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  47.918% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+.footer__word.is-drawing .footer__line--7 {
+  animation: footer-line-7 var(--footer-word-cycle) linear 1 forwards;
+}
+@keyframes footer-line-7 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  47.918% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  54.448% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+.footer__word.is-drawing .footer__line--8 {
+  animation: footer-line-8 var(--footer-word-cycle) linear 1 forwards;
+}
+@keyframes footer-line-8 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  54.448% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  93.470% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+.footer__word.is-drawing .footer__line--9 {
+  animation: footer-line-9 var(--footer-word-cycle) linear 1 forwards;
+}
+@keyframes footer-line-9 {
+  0% {
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  93.470% {
+    animation-timing-function: ease-out;
+    stroke-dasharray: 0 1;
+    visibility: hidden;
+  }
+  100.000% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+  100% {
+    stroke-dasharray: 1 1;
+    visibility: visible;
+  }
+}
+.footer__word.is-revealed .footer__line {
+  visibility: visible;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 0;
+}
+
+/* =========================================================
+   Responsivo
+   ========================================================= */
+@media (max-width: 1200px) {
+  /* Empilhado (mobile): as duas camadas (.hero__row e .hero__overlay) só
+     fazem sentido sobrepostas quando há espaço sobrando dos lados (tela
+     larga). Aqui viram blocos normais, um embaixo do outro — texto
+     primeiro (order:1), arte depois (order:2) — via flexbox no .hero. */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    /* Mesma conta do desktop: hero + header + marquee = 100vh. */
+    min-height: calc(100vh - var(--header-height) - var(--marquee-height));
+  }
+  /* A arte sai do fluxo e fica absoluta no canto superior direito do
+     hero, atrás do texto (o overlay tem z-index 1). */
+  .hero__row {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: auto;
+    z-index: 0;
+  }
+  .hero__overlay {
+    position: relative;
+    inset: auto;
+    order: 1;
+    flex: 1;
+    padding-block: clamp(32px, 6vw, 80px);
+  }
+  .hero__overlay .hero__inner {
+    pointer-events: auto;
+  }
+  .hero__content {
+    width: 100%;
+    max-width: none;
+    pointer-events: auto;
+  }
+  .hero__deco {
+    /* Empilhado (mobile): inverte — agora é a LARGURA (100% da coluna)
+       que manda, e a altura acompanha via aspect-ratio. */
+    height: auto;
+    width: 100%;
+    aspect-ratio: 666 / 768;
+  }
+  .products__grid,
+  .distributors__perks {
+    flex-wrap: wrap;
+  }
+  .stats__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .distributors__ideal {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tribe__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .nav__list,
+  .header__cta {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+
+  .about__inner,
+  .feed-well__inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .about__text,
+  .feed-well__text {
+    max-width: none;
+  }
+  .about__heading,
+  .about__text .section-lead {
+    max-width: none;
+  }
+  .about__art,
+  .feed-well__art {
+    max-width: 100%;
+  }
+
+  .differentials__grid {
+    max-width: none;
+  }
+
+  .stats__grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .distributors__perks {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .distributors__banner-layer {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer__grid {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .differentials__grid {
+    grid-template-columns: 1fr;
+  }
+  .distributors__ideal {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .tribe__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero__actions .btn {
+    text-align: center;
+  }
+}
+
+/* ---------- Motion: respeitar prefers-reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
