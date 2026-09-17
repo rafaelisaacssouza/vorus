@@ -636,7 +636,7 @@ body {
 
 /* =========================================================
    Arte da seção "Cuidar vai além de alimentar"
-   Estrutura e valores vindos de elementor-1678-2026-09-16.json:
+   Estrutura e valores vindos de docs/elementor-1678-2026-09-16.json:
    linha de 2 colunas de 50% com gap 0; na coluna da direita
    (itens centralizados) ficam o container "Dog BG" e, como IRMÃOS
    absolutos, os dois widgets HTML (laço e palavra).
@@ -734,7 +734,7 @@ body {
   z-index: 2;
   overflow: visible;
 }
-/* Palavra ANIMAL: as keyframes são as do example.html / Figma Motion
+/* Palavra ANIMAL: as keyframes são as do docs/example.html / Figma Motion
    (kf_197_276..280, ciclo de 3.404891s), sem nenhuma adaptação — só
    deixam de ser `infinite` e passam a rodar uma vez (`1 forwards`),
    disparadas no fim do ATO 1 da timeline, com o laço (.is-drawing).

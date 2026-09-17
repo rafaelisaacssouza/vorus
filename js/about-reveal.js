@@ -1,7 +1,7 @@
 // Entrada da arte da seção "Cuidar vai além de alimentar".
 //
 // Timeline em dois atos (tempos e curvas do
-// elementor-1678-2026-09-16.json / Figma Motion, node 197:269 / 206:456),
+// docs/elementor-1678-2026-09-16.json / Figma Motion, node 197:269 / 206:456),
 // disparada quando a seção entra na viewport. O ATO 1 repete a cada volta
 // pela rolagem; o ATO 2 toca uma vez só:
 //
@@ -25,7 +25,7 @@
 // stroke-dashoffset não bate com o que o Figma exportou (as keyframes
 // mexem em stroke-dasharray, dashoffset e visibility ao mesmo tempo, e
 // cada corda tem seu próprio ease interno). Então ela continua sendo as
-// keyframes originais do example.html (kf_197_276..280, em css/styles.css);
+// keyframes originais do docs/example.html (kf_197_276..280, em css/styles.css);
 // a timeline só acende a classe .is-drawing no fim do ATO 1, o que as faz
 // rodar UMA vez (`1 forwards`) em sincronia com o laço.
 
