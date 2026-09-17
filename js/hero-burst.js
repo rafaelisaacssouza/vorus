@@ -40,7 +40,9 @@ function initHeroBurst() {
     tl.fromTo(
       ribbon,
       { clipPath: "inset(100% 0 0 0)" },
-      { clipPath: "inset(0% 0 0 0)", duration: 0.8, ease: "power1.inOut" },
+      // 1.015s = 0.8s × 1085/855: a fita ficou mais alta, então a duração
+      // cresce na mesma proporção pra velocidade do desenho não mudar.
+      { clipPath: "inset(0% 0 0 0)", duration: 1.015, ease: "power1.inOut" },
       0,
     );
   }

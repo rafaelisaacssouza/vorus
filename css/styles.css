@@ -47,6 +47,46 @@ ul {
   border: 0;
 }
 
+/* ---------- Fontes locais ---------- */
+/* Neulis: títulos e conteúdo de pet. Millennial Solstice: acentos
+   caligráficos de pet. Poppins (texto comum) vem do Google Fonts. */
+@font-face {
+  font-family: "Neulis";
+  src: url("../assets/fonts/Neulis-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neulis";
+  src: url("../assets/fonts/Neulis-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neulis";
+  src: url("../assets/fonts/Neulis-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neulis";
+  src: url("../assets/fonts/Neulis-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Neulis";
+  src: url("../assets/fonts/Neulis-Black.otf") format("opentype");
+  font-weight: 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Millennial";
+  src: url("../assets/fonts/MillennialSolstice.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
 /* ---------- Design tokens ---------- */
 :root {
   /* Cores */
@@ -68,15 +108,23 @@ ul {
   --grad-gatos: linear-gradient(161deg, #b7d89d 8.5%, #6baa48 91.5%);
 
   /* Tipografia */
-  --font-heading: "Archivo Black", sans-serif;
-  --font-condensed: "Barlow Condensed", sans-serif;
-  --font-script: "Pacifico", cursive;
-  --font-re: "Poppins", sans-serif;
-  --font-body: "DM Sans", sans-serif;
+  /* Títulos: Neulis (sempre em 900, aplicado junto do font-family) */
+  --font-heading: "Neulis", sans-serif;
+  /* Texto comum (corpo, botões, labels): Poppins */
+  --font-condensed: "Poppins", sans-serif;
+  /* Conteúdo de pet: Neulis e Millennial */
+  --font-pet: "Neulis", sans-serif;
+  --font-script: "Millennial", cursive;
+  --font-re: "Neulis", sans-serif;
+  --font-body: "Poppins", sans-serif;
 
   /* Escala tipográfica fluida — clamp(mín @360px, fluido, máx @1366px) */
   --fs-hero: clamp(36px, 22.48px + 3.754vw, 81.96px); /* -10% abaixo do máx */
-  --fs-hero-script: clamp(37.8px, 23.35px + 4.015vw, 86.88px); /* -10% abaixo do máx */
+  --fs-hero-script: clamp(
+    37.8px,
+    23.35px + 4.015vw,
+    86.88px
+  ); /* -10% abaixo do máx */
   --fs-h2: clamp(32px, 21.69px + 2.863vw, 60.8px);
   --fs-h3: clamp(20px, 17.42px + 0.716vw, 27.2px);
   --fs-h4: clamp(16px, 15.14px + 0.239vw, 18.4px);
@@ -85,7 +133,7 @@ ul {
   --fs-body: clamp(15px, 14.36px + 0.179vw, 16.8px);
   --fs-body-sm: clamp(14px, 13.57px + 0.119vw, 15.2px);
   --fs-body-xs: clamp(13.5px, 13.06px + 0.121vw, 14.72px);
-  --fs-eyebrow: clamp(11.5px, 10.92px + 0.161vw, 13.12px);
+  --fs-eyebrow: 12px;
   --fs-label-sm: clamp(10.5px, 10.14px + 0.101vw, 11.52px);
   --fs-marquee: clamp(12px, 10.86px + 0.318vw, 14px);
   --fs-nav-link: clamp(13px, 12.5px + 0.139vw, 14.4px);
@@ -163,6 +211,7 @@ body {
 
 .section-heading {
   font-family: var(--font-heading);
+  font-weight: 900;
   font-size: var(--fs-h2);
   line-height: 0.98;
   letter-spacing: -0.01em;
@@ -188,7 +237,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 16px 25.6px;
+  padding: 12px 24px;
   border-radius: var(--radius-pill);
   border: 2px solid transparent;
   font-family: var(--font-condensed);
@@ -285,7 +334,7 @@ body {
 }
 .marquee__text {
   font-family: var(--font-condensed);
-  font-weight: 900;
+  font-weight: 600;
   font-size: var(--fs-marquee);
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -480,7 +529,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
+  gap: 16px;
   width: 50%;
   max-width: 560px;
   pointer-events: auto;
@@ -493,12 +542,10 @@ body {
   font-size: var(--fs-hero);
   line-height: 0.95;
   letter-spacing: -0.01em;
-  text-transform: uppercase;
   color: var(--cor-vinho);
 }
 .hero__heading .re {
   font-family: var(--font-re);
-  font-weight: 900;
 }
 .hero__heading .pet {
   font-family: var(--font-script);
@@ -511,28 +558,20 @@ body {
 .hero__paragraph {
   font-family: var(--font-body);
   font-size: var(--fs-body);
-  line-height: 1.6;
   color: var(--cor-vinho);
   max-width: 506px;
+  font-weight: 400;
 }
 .hero__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12.8px;
-}
-.hero__tagline {
-  font-family: var(--font-condensed);
-  font-weight: 800;
-  font-size: var(--fs-eyebrow);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cor-vinho);
+  flex-direction: row;
+  gap: 12px;
 }
 
 /* Camada decorativa do hero — estrutura do Elementor (elementor-*.json):
    shadow, splash e a foto compartilham o MESMO canvas (666x768), então é
    só sobrepor em inset:0 sem cálculo de posição por elemento. Só a fita
-   (path) tem canvas maior (766x855, pensado pra sangrar) e usa offset +
+   (path) tem canvas maior (766x1085, pensado pra sangrar) e usa offset +
    escala.
    A ALTURA é quem manda aqui (height:100% do .hero__row, que tem
    min-height:100vh) — a largura é derivada dela via aspect-ratio, nunca
@@ -571,7 +610,7 @@ body {
   position: absolute;
   width: 100%;
   /* Sem height/object-fit: cover aqui de propósito — o canvas da fita
-     (766x855) tem proporção DIFERENTE do resto (666x768), então forçar
+     (766x1085) tem proporção DIFERENTE do resto (666x768), então forçar
      height:100% + cover cortava a ponta de cima pra preencher uma caixa
      com proporção errada. width:100% + height:auto deixa a própria
      proporção do asset mandar, sem cortar nada. */
@@ -579,6 +618,11 @@ body {
   top: 9%;
   right: -16%;
   transform: scale(1.1);
+  /* O canvas novo (766x1085) é o antigo (766x855) com o final da fita
+     estendido pra baixo — o topo é o mesmo. Com a origem padrão (50% 50%)
+     o scale puxaria o topo mais pra cima que antes; 39.401% = 427.5/1085 é
+     o centro do canvas antigo, então no desktop a fita fica onde estava. */
+  transform-origin: 50% 39.401%;
   z-index: -1;
   /* Estado inicial da animação de "desenho" (js/hero-burst.js): clipado
      de baixo pra cima, nada visível até a tween rodar. */
@@ -856,9 +900,13 @@ body {
 }
 /* Estado final imediato: sem GSAP (CDN fora do ar) ou com
    prefers-reduced-motion, js/about-reveal.js marca .is-revealed. */
-.about__art.is-revealed .about__dog,
-.about__art.is-revealed .about__dog-photo {
+.about__art.is-revealed .about__dog {
   transform: none;
+}
+/* Mesmo estado final da timeline (js/about-reveal.js): 2% abaixo e 1.03 de
+   escala, pra não abrir vão no pé do card. */
+.about__art.is-revealed .about__dog-photo {
+  transform: translateY(2%) scale(1.03);
 }
 .about__art.is-revealed .about__squiggle-path {
   visibility: visible;
@@ -958,7 +1006,7 @@ body {
   transform: scale(1.05) rotate(var(--diff-tilt, 0deg));
 }
 .product-card__kicker {
-  font-family: var(--font-condensed);
+  font-family: var(--font-pet);
   font-weight: 800;
   font-size: var(--fs-eyebrow);
   letter-spacing: 0.14em;
@@ -967,6 +1015,7 @@ body {
 }
 .product-card__title {
   font-family: var(--font-heading);
+  font-weight: 900;
   font-size: var(--fs-h3);
   text-transform: uppercase;
   letter-spacing: -0.01em;
@@ -981,7 +1030,7 @@ body {
   padding: 5.6px 11.2px;
   border-radius: var(--radius-pill);
   background: var(--cor-pill-bg);
-  font-family: var(--font-condensed);
+  font-family: var(--font-pet);
   font-weight: 700;
   font-size: var(--fs-label-sm);
   letter-spacing: 0.08em;
@@ -989,7 +1038,7 @@ body {
   color: var(--cor-vinho);
 }
 .product-card__desc {
-  font-family: var(--font-body);
+  font-family: var(--font-pet);
   font-size: var(--fs-body-sm);
   line-height: 1.5;
   color: var(--cor-texto-corpo);
@@ -1003,7 +1052,7 @@ body {
   border-top: 1px dashed rgba(92, 0, 26, 0.15);
 }
 .product-card__weight {
-  font-family: var(--font-condensed);
+  font-family: var(--font-pet);
   font-weight: 800;
   font-size: var(--fs-btn-sm);
   letter-spacing: 0.1em;
@@ -1116,6 +1165,7 @@ body {
 }
 .diff-card__title {
   font-family: var(--font-heading);
+  font-weight: 900;
   font-size: var(--fs-h4);
   /* Sem isso o título herdava o line-height do corpo (1.5), que em caixa
      alta e duas linhas abria um vão grande entre elas. */
@@ -1187,6 +1237,7 @@ body {
   display: flex;
   align-items: flex-start;
   font-family: var(--font-heading);
+  font-weight: 900;
   font-size: var(--fs-stat-number);
   letter-spacing: -0.02em;
   color: var(--cor-laranja);
@@ -1194,6 +1245,7 @@ body {
 }
 .stat-card__suffix {
   font-family: var(--font-heading);
+  font-weight: 900;
   font-size: var(--fs-stat-suffix);
   color: var(--cor-branco);
   margin-top: 0.15em;
@@ -1231,6 +1283,7 @@ body {
 }
 .feed-well__heading {
   font-family: var(--font-heading);
+  font-weight: 900;
   font-size: var(--fs-h2);
   line-height: 0.98;
   letter-spacing: -0.01em;
@@ -1275,10 +1328,17 @@ body {
   max-width: 569px;
   margin-inline: auto;
 }
+/* Conteúdo de pet em texto corrido: Neulis. */
+.feed-well__text .section-lead,
+.tribe__lead {
+  font-family: var(--font-pet);
+}
+/* Hashtag da comunidade: acento caligráfico (Millennial). */
 .tribe__hashtag {
-  font-family: var(--font-heading);
+  font-family: var(--font-script);
+  font-weight: 400;
   font-size: var(--fs-hashtag);
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.9);
   margin-top: 24px;
 }
@@ -1368,6 +1428,7 @@ body {
 }
 .ideal-card__title {
   font-family: var(--font-heading);
+  font-weight: 900;
   font-size: var(--fs-h4-sm);
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -1387,6 +1448,7 @@ body {
 }
 .perk-card__title {
   font-family: var(--font-heading);
+  font-weight: 900;
   font-size: var(--fs-h4-sm);
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -1457,7 +1519,7 @@ body {
 }
 .distributors__banner-heading {
   font-family: var(--font-heading);
-  font-weight: 400; /* h3 na original, p na cópia: peso igual nas duas */
+  font-weight: 900;
   font-size: clamp(24px, 2.4vw, 38.4px);
   text-transform: uppercase;
   color: var(--cor-branco);
@@ -1479,7 +1541,9 @@ body {
   color: var(--cor-branco);
 }
 /* A cópia não recebe mouse, então espelha o hover do botão de verdade. */
-.distributors__banner:has(.btn--white:hover) .distributors__banner-layer--hover .btn--white {
+.distributors__banner:has(.btn--white:hover)
+  .distributors__banner-layer--hover
+  .btn--white {
   transform: translateY(-2px);
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1898,7 +1962,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: 50%;
+    width: 65%;
     height: auto;
     z-index: 0;
   }
@@ -1923,6 +1987,9 @@ body {
     height: auto;
     width: 100%;
     aspect-ratio: 666 / 768;
+    /* Sem corte: a fita (mais alta que a caixa) continua até o fim, por
+       cima do fundo do hero, que é quem corta no limite da seção. */
+    overflow: visible;
   }
   .products__grid,
   .distributors__perks {

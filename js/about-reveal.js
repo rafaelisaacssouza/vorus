@@ -7,8 +7,8 @@
 //
 //   ATO 1 — o card                          0s   → 0.8216s
 //     fundo laranja  scale 0.8 → 1          0s   → 0.4641s
-//     foto do cão    scale 0.6 → 1          0s   → 0.561s
-//                    translateY 44.9% → 0     0s   → 0.8216s
+//     foto do cão    scale 0.6 → 1.03        0s   → 0.561s
+//                    translateY 44.9% → 2%   0s   → 0.8216s
 //
 //   ATO 2 — só depois que o card assenta    0.8216s → 4.2265s
 //     laço           desenha o traço        0.8216s → 2.6693s
@@ -33,6 +33,10 @@
 const ABOUT_CARD_END = 0.8216;
 // Ciclo completo das keyframes da palavra.
 const ABOUT_WORD_CYCLE = 3.404891;
+// Destino da foto: 2% da altura dela abaixo do pé do card (o ease passa do
+// destino em ~1,8%, então esses 2% evitam o vão), com escala compensando.
+const ABOUT_PHOTO_END_Y = 2;
+const ABOUT_PHOTO_END_SCALE = 1.03;
 
 function initAboutReveal() {
   const art = document.querySelector(".about__art");
@@ -116,16 +120,27 @@ function initAboutReveal() {
   }
 
   if (photo) {
+    // O ease de entrada passa do destino (overshoot de ~4% do trajeto de
+    // 44.9%, ou seja ~1,8% da altura da foto): no pico a foto subia mais
+    // que o card e abria um vão no pé do laranja. Daí o destino ser 2%
+    // ABAIXO do pé (ABOUT_PHOTO_END_Y) — no pico ela ainda não descola —
+    // com a escala final um pouco maior pra compensar o que desce e sai
+    // pelo corte de baixo.
     cardTl.fromTo(
       photo,
       { scale: 0.6 },
-      { scale: 1, duration: 0.561, ease: easeBg },
+      { scale: ABOUT_PHOTO_END_SCALE, duration: 0.561, ease: easeBg },
       0
     );
     cardTl.fromTo(
       photo,
       { yPercent: 44.9, y: 0 },
-      { yPercent: 0, y: 0, duration: 0.8216, ease: easeOvershoot },
+      {
+        yPercent: ABOUT_PHOTO_END_Y,
+        y: 0,
+        duration: 0.8216,
+        ease: easeOvershoot,
+      },
       0
     );
   }
