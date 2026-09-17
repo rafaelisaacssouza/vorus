@@ -1330,34 +1330,37 @@ body {
   max-width: 569px;
   margin-inline: auto;
 }
-/* Hashtag da comunidade: acento caligráfico (Millennial). */
+/* Hashtag: Neulis. A Millennial não tem "#" nem as maiúsculas acentuadas,
+   e a palavra saía trocada. */
 .tribe__hashtag {
-  font-family: var(--font-script);
-  font-weight: 400;
+  font-family: var(--font-heading);
+  font-weight: 900;
   font-size: var(--fs-hashtag);
-  letter-spacing: 0;
-  /* A Millennial tem ascendentes e descendentes longos: line-height
-     folgado pra não cortar as pontas das letras. */
-  line-height: 1.5;
-  padding-bottom: 0.15em;
+  letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.9);
   margin-top: 24px;
 }
 
+/* Botão de seguir, logo abaixo da hashtag. */
+.tribe__cta {
+  margin-top: 24px;
+}
+
+/* Grade dos posts: cada card tem entre 320 e 400px. Abaixo de 326px o
+   embed do Instagram se corta, então a coluna nunca fica menor que isso;
+   as linhas ficam centralizadas (5 posts = 3 + 2, ou 2 + 2 + 1). */
 .tribe__grid {
   display: grid;
-  /* 5 posts; os cards quebram em linhas conforme a largura. O mínimo de
-     300px é o que o embed do Instagram precisa pra não cortar nada. */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 400px));
+  justify-content: center;
   gap: 16px;
   width: 100%;
   margin-top: 48px;
 }
-/* Card do embed: o iframe do Instagram não tem altura automática, então a
-   altura vem daqui (a mídia é quadrada e o resto é cabeçalho/rodapé do
-   próprio embed). */
+/* O iframe do Instagram não tem altura automática: a mídia é quadrada e o
+   embed ainda soma cabeçalho e rodapé, daí a altura fixa. */
 .tribe__post {
-  height: 470px;
+  height: 500px;
   border-radius: var(--radius-img);
   overflow: hidden;
   background: var(--cor-branco);
