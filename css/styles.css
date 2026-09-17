@@ -1341,14 +1341,14 @@ body {
   margin-top: 24px;
 }
 
-/* Botão de seguir, logo abaixo da hashtag. */
+/* Botão de seguir, depois dos posts. */
 .tribe__cta {
-  margin-top: 24px;
+  margin-top: 40px;
 }
 
 /* Grade dos posts: cada card tem entre 320 e 400px. Abaixo de 326px o
    embed do Instagram se corta, então a coluna nunca fica menor que isso;
-   as linhas ficam centralizadas (5 posts = 3 + 2, ou 2 + 2 + 1). */
+   as linhas ficam centralizadas (3 posts numa linha, ou 2 + 1, ou 1 + 1 + 1). */
 .tribe__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 400px));
