@@ -10,9 +10,12 @@
 //     foto do cão    scale 0.6 → 1.03        0s   → 0.561s
 //                    translateY 44.9% → 2%   0s   → 0.8216s
 //
-//   ATO 2 — só depois que o card assenta    0.8216s → 4.2265s
-//     laço           desenha o traço        0.8216s → 2.6693s
+//   ATO 2 — uma vez só                      0s      → 4.2265s
+//     laço           desenha o traço        0s      → 1.8477s
 //     ANIMAL         keyframes CSS          0.8216s → 4.2265s
+//
+// O laço sai junto com o card, no mesmo trigger; só a palavra espera o card
+// assentar (ABOUT_CARD_END).
 //
 // O laço é desenhado percorrendo o path, como a fita do hero: o comprimento
 // real é medido com getTotalLength() e vira stroke-dasharray/-dashoffset em px,
@@ -151,9 +154,11 @@ function initAboutReveal() {
     );
   }
 
-  // ---- ATO 2: laço e palavra, uma vez só, depois do card ----
+  // ---- ATO 2: laço e palavra, uma vez só ----
+  // Sem delay na timeline: o laço começa a ser desenhado JUNTO com o card,
+  // no mesmo trigger, e não depois que o fundo termina de subir. Quem ainda
+  // espera o card assentar é só a palavra, posicionada em ABOUT_CARD_END.
   const tl = gsap.timeline({
-    delay: ABOUT_CARD_END,
     scrollTrigger: {
       trigger: art,
       start: "30% 75%",
@@ -170,10 +175,10 @@ function initAboutReveal() {
     );
   }
 
-  tl.call(() => art.classList.add("is-drawing"), null, 0);
+  tl.call(() => art.classList.add("is-drawing"), null, ABOUT_CARD_END);
 
   // Segura a timeline pelo ciclo inteiro da palavra, que roda no CSS.
-  tl.to({}, { duration: ABOUT_WORD_CYCLE }, 0);
+  tl.to({}, { duration: ABOUT_WORD_CYCLE }, ABOUT_CARD_END);
 }
 
 window.VorusAboutReveal = { init: initAboutReveal };
