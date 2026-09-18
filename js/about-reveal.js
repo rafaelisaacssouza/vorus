@@ -107,14 +107,17 @@ function initAboutReveal() {
   // ---- ATO 1: o card (fundo + cachorro) ----
   // Timeline própria, que repete: toca ao entrar descendo, toca de novo
   // quando o usuário sobe e a arte volta pela parte de cima da tela
-  // (onEnterBack), e volta ao estado inicial ao subir acima do start
-  // (onLeaveBack), pra tocar de novo na próxima descida.
+  // (onEnterBack), e ao subir acima do start (onLeaveBack) roda de trás pra
+  // frente até o estado inicial, pra tocar de novo na próxima descida.
+  // `reverse` e não `reset` no onLeaveBack: reset volta ao começo num
+  // corte seco: a saída tem que usar as mesmas curvas da entrada, só que
+  // espelhadas — é o que o reverse faz.
   const cardTl = gsap.timeline({
     scrollTrigger: {
       trigger: art,
       start: "30% 75%",
       markers: window.VORUS_MARKERS, // debug: liga em js/main.js
-      toggleActions: "restart none restart reset",
+      toggleActions: "restart none restart reverse",
     },
   });
 
