@@ -43,6 +43,9 @@ function initAboutReveal() {
   if (!art) return;
 
   const dog = art.querySelector(".about__dog");
+  // Fundo laranja e recorte da foto são irmãos (o laço passa entre eles, pelo
+  // z-index, sem herdar o scale) e escalam juntos, na mesma tween.
+  const card = [dog, art.querySelector(".about__dog-clip")].filter(Boolean);
   const photo = art.querySelector(".about__dog-photo");
   const squiggle = art.querySelector(".about__squiggle-path");
 
@@ -76,7 +79,7 @@ function initAboutReveal() {
   // props scale/translate, pra não somar com o transform do GSAP); o do
   // laço é repetido aqui porque é ele que garante o traço escondido caso
   // a folha de estilo carregue depois.
-  if (dog) gsap.set(dog, { scale: 0.8 });
+  if (card.length) gsap.set(card, { scale: 0.8 });
   // yPercent (% da altura da própria imagem), não px: 275.244 no canvas do
   // Figma equivale a 44.9% da altura renderizada da foto, e assim o salto
   // de entrada acompanha o tamanho do card em qualquer tela.
@@ -115,8 +118,8 @@ function initAboutReveal() {
     },
   });
 
-  if (dog) {
-    cardTl.fromTo(dog, { scale: 0.8 }, { scale: 1, duration: 0.4641, ease: easeBg }, 0);
+  if (card.length) {
+    cardTl.fromTo(card, { scale: 0.8 }, { scale: 1, duration: 0.4641, ease: easeBg }, 0);
   }
 
   if (photo) {

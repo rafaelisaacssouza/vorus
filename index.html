@@ -223,44 +223,48 @@
                a palavra são irmãos do card, fora dele, pra que o scale da
                entrada do card não deforme o traço. -->
           <div class="about__stage">
-            <div class="about__dog">
-              <!-- Laço: tamanho
-                   fixo do Figma, preserveAspectRatio="none" e overflow visível,
-                   então sangra pra fora do card. Fica DENTRO do card, entre o
-                   fundo laranja e a foto — é o único jeito de passar por trás
-                   do cachorro e por cima do laranja, já que o card tem
-                   transform (contexto de empilhamento próprio). Desenhado uma
-                   vez, percorrendo o path do começo ao fim em 1.8477s, só
-                   depois que o card termina de escalar. Sem pathLength: o dash
-                   é medido em px por js/about-reveal.js. -->
-              <svg
-                class="about__squiggle"
-                width="755.871"
-                height="621.873"
-                viewBox="0 0 755.871 621.873"
-                preserveAspectRatio="none"
-                overflow="visible"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  class="about__squiggle-path"
-                  stroke="#F8ECD2"
-                  stroke-width="16.8717"
-                  stroke-linecap="round"
-                  d="M8.43667 81.0723C19.1563 -11.4339 137.159 -8.82981 191.299 50.9581C217.359 79.7365 205.732 207.035 154.437 175.171C100.358 141.576 161.083 65.3192 195.179 51.1791C219.839 40.9524 244.636 28.8953 265.937 31.179C362.879 41.5722 376.206 229.715 517.19 210.927C545.903 207.101 571.092 201.719 592.001 179.637C637.36 131.732 608.624 93.4987 564.212 112.421C550.559 118.238 499.257 151.584 518.541 209.912C538.414 270.02 611.906 327.8 677.294 318.948C710.718 314.303 772.473 286.666 735.41 246.288C715.005 224.057 687.788 232.684 679.337 239.51C665.938 250.332 659.356 269.314 677.667 318.388C693.119 359.72 714.821 398.85 737.395 436.64C758.195 471.461 746.079 522.778 706.629 613.435"
-                />
-              </svg>
+            <!-- Fundo laranja do card, sozinho: é ele que escala na entrada.
+                 O laço não mora aqui dentro justamente pra não herdar esse
+                 scale. -->
+            <div class="about__dog"></div>
 
-              <!-- Recorte do card: é ele que tem overflow hidden + radius, pra
-                   cortar a foto (que é mais alta que o card) sem tocar no laço. -->
-              <div class="about__dog-clip">
-                <img
-                  class="about__dog-photo"
-                  src="assets/img/dog-section.png"
-                  alt="Cachorro border collie com a língua de fora, expressão alegre."
-                />
-              </div>
+            <!-- Laço: tamanho fixo do Figma, preserveAspectRatio="none" e
+                 overflow visível, então sangra pra fora do card. Irmão do
+                 fundo e do recorte no palco, com z-index entre os dois — por
+                 isso passa por cima do laranja e por trás do cachorro sem
+                 herdar nenhuma transform. Desenhado uma vez, percorrendo o
+                 path do começo ao fim em 1.8477s, só depois que o card
+                 termina de escalar. Sem pathLength: o dash é medido em px por
+                 js/about-reveal.js. -->
+            <svg
+              class="about__squiggle"
+              width="755.871"
+              height="621.873"
+              viewBox="0 0 755.871 621.873"
+              preserveAspectRatio="none"
+              overflow="visible"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                class="about__squiggle-path"
+                stroke="#F8ECD2"
+                stroke-width="16.8717"
+                stroke-linecap="round"
+                d="M8.43667 81.0723C19.1563 -11.4339 137.159 -8.82981 191.299 50.9581C217.359 79.7365 205.732 207.035 154.437 175.171C100.358 141.576 161.083 65.3192 195.179 51.1791C219.839 40.9524 244.636 28.8953 265.937 31.179C362.879 41.5722 376.206 229.715 517.19 210.927C545.903 207.101 571.092 201.719 592.001 179.637C637.36 131.732 608.624 93.4987 564.212 112.421C550.559 118.238 499.257 151.584 518.541 209.912C538.414 270.02 611.906 327.8 677.294 318.948C710.718 314.303 772.473 286.666 735.41 246.288C715.005 224.057 687.788 232.684 679.337 239.51C665.938 250.332 659.356 269.314 677.667 318.388C693.119 359.72 714.821 398.85 737.395 436.64C758.195 471.461 746.079 522.778 706.629 613.435"
+              />
+            </svg>
+
+            <!-- Recorte da foto: mesma geometria do fundo laranja, com
+                 overflow hidden + radius, pra cortar a foto (mais alta que o
+                 card). Escala junto com o fundo na entrada, pela mesma tween
+                 da timeline. -->
+            <div class="about__dog-clip">
+              <img
+                class="about__dog-photo"
+                src="assets/img/dog-section.png"
+                alt="Cachorro border collie com a língua de fora, expressão alegre."
+              />
             </div>
 
             <!--

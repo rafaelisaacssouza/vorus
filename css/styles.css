@@ -704,13 +704,19 @@ body {
   width: 100%;
   aspect-ratio: 755.871 / 621.873;
 }
-/* Container "Dog BG DIV": 580/755.871 = 76.734% do palco, encostado no
-   topo, com a proporção 580/588 do JSON. O estado inicial (scale 0.8) é o
-   mesmo do JSON — quem anima daqui em diante é a timeline em
-   js/about-reveal.js.
-   O recorte da foto (overflow hidden) fica no .about__dog-clip. Dentro do
-   card a ordem é fundo laranja < laço (z-index 1) < foto (z-index 2); a
-   palavra é irmã do card no palco e fica por cima de tudo. */
+/* Os quatro filhos do palco são irmãos, empilhados só por z-index:
+     0  .about__dog       fundo laranja
+     1  .about__squiggle  laço
+     2  .about__dog-clip  foto do cachorro
+     3  .about__word      palavra ANIMAL
+   O laço PRECISA ser irmão, não filho do fundo nem do recorte: os dois têm
+   transform (o scale de entrada) e por isso criam contexto de empilhamento
+   próprio — de dentro de um deles o laço herdaria o scale, e o traço
+   esticaria junto toda vez que a seção reentra na viewport.
+
+   Container "Dog BG DIV": 580/755.871 = 76.734% do palco, encostado no topo,
+   com a proporção 580/588 do JSON. O estado inicial (scale 0.8) é o mesmo do
+   JSON — quem anima daqui em diante é a timeline em js/about-reveal.js. */
 .about__dog {
   position: absolute;
   top: 0;
@@ -722,24 +728,18 @@ body {
   background: var(--cor-laranja-hover);
   border-radius: 16px; /* igual ao JSON; % aqui daria cantos elípticos */
   transform: scale(0.8);
-  /* Abaixo da palavra ANIMAL, que é irmã dele no palco. */
-  z-index: 1;
+  z-index: 0;
 }
-/* Laço: FILHO do card, entre o fundo laranja e o recorte da foto — é assim
-   que ele passa por cima do laranja e por trás do cachorro. Como irmão do
-   card não dava: o card tem transform (scale de entrada) e por isso cria
-   contexto de empilhamento próprio, então nenhum irmão consegue entrar
-   entre o fundo dele e a foto lá dentro.
-   O canvas do SVG é o palco (755.871 x 621.873) e o card tem 580 de
-   largura nesse mesmo canvas, então aqui o laço vale 755.871/580 = 130.323%
-   da largura do card, puxado 72.5/580 = 12.5% pra esquerda — o que o deixa
-   exatamente onde o Figma põe, sangrando pra fora dos dois lados. A altura
-   vem sozinha da proporção do próprio SVG. */
+/* Laço: irmão do fundo e do recorte, com z-index no meio dos dois — passa
+   por cima do laranja e por trás do cachorro sem herdar transform nenhuma.
+   O canvas dele É o palco (755.871 x 621.873), então ocupa a caixa inteira
+   em x=0, y=0 e sangra pra fora do card dos dois lados, como no Figma. A
+   altura vem sozinha da proporção do próprio SVG. */
 .about__squiggle {
   position: absolute;
   top: 0;
-  left: -12.5%; /* -72.5 / 580 */
-  width: 130.323%; /* 755.871 / 580 */
+  left: 0;
+  width: 100%;
   height: auto;
   z-index: 1;
   max-width: none;
@@ -755,18 +755,25 @@ body {
 .about__squiggle-path {
   visibility: hidden;
 }
-/* Recorte do card: herda a geometria e o radius e é quem tem overflow
+/* Recorte da foto: repete a geometria do fundo laranja (é irmão dele, não
+   filho — quem separa os dois é o laço, no z-index 1) e é quem tem overflow
    hidden, cortando a foto (958x1350, mais alta que o card nos 75% de
-   largura) sem encostar no laço. column-reverse encosta a foto na base. */
+   largura). column-reverse encosta a foto na base. O scale(0.8) inicial é o
+   mesmo do fundo: a timeline anima os dois na mesma tween, senão a foto
+   apareceria pra fora do laranja enquanto ele ainda está encolhido. */
 .about__dog-clip {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 9.591%; /* 72.5 / 755.871 */
+  width: 76.734%; /* 580 / 755.871 */
+  aspect-ratio: 580 / 588;
   z-index: 2;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  border-radius: inherit;
+  border-radius: 16px;
   overflow: hidden;
+  transform: scale(0.8);
 }
 /* Widget de imagem: 75% da largura do card. O translate de entrada é em %
    da própria imagem (275.244 / 613 de altura renderizada ≈ 44.9%), pra não
@@ -786,7 +793,7 @@ body {
   width: 86.325%;
   height: auto;
   display: block;
-  z-index: 2;
+  z-index: 3;
   overflow: visible;
 }
 /* Palavra ANIMAL: as keyframes são as do docs/example.html / Figma Motion
@@ -911,7 +918,8 @@ body {
 }
 /* Estado final imediato: sem GSAP (CDN fora do ar) ou com
    prefers-reduced-motion, js/about-reveal.js marca .is-revealed. */
-.about__art.is-revealed .about__dog {
+.about__art.is-revealed .about__dog,
+.about__art.is-revealed .about__dog-clip {
   transform: none;
 }
 /* Mesmo estado final da timeline (js/about-reveal.js): 2% abaixo e 1.03 de
