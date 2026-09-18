@@ -708,9 +708,9 @@ body {
    topo, com a proporção 580/588 do JSON. O estado inicial (scale 0.8) é o
    mesmo do JSON — quem anima daqui em diante é a timeline em
    js/about-reveal.js.
-   O recorte da foto (overflow hidden) fica no .about__dog-clip. O laço e a
-   palavra são irmãos deste card no palco: o laço passa por trás dele
-   (z-index 0) e a palavra por cima (z-index 2). */
+   O recorte da foto (overflow hidden) fica no .about__dog-clip. Dentro do
+   card a ordem é fundo laranja < laço (z-index 1) < foto (z-index 2); a
+   palavra é irmã do card no palco e fica por cima de tudo. */
 .about__dog {
   position: absolute;
   top: 0;
@@ -722,20 +722,26 @@ body {
   background: var(--cor-laranja-hover);
   border-radius: 16px; /* igual ao JSON; % aqui daria cantos elípticos */
   transform: scale(0.8);
-  /* Acima do laço: a fita passa POR TRÁS do card (só sangra pra fora dele). */
+  /* Abaixo da palavra ANIMAL, que é irmã dele no palco. */
   z-index: 1;
 }
-/* Laço: irmão do card no palco, como a palavra, pra não herdar o scale da
-   entrada do card. O canvas dele É o palco (755.871 x 621.873), então ocupa
-   a caixa inteira em x=0, y=0 e sangra pra fora do card dos dois lados,
-   como no Figma. A altura vem sozinha da proporção do próprio SVG. */
+/* Laço: FILHO do card, entre o fundo laranja e o recorte da foto — é assim
+   que ele passa por cima do laranja e por trás do cachorro. Como irmão do
+   card não dava: o card tem transform (scale de entrada) e por isso cria
+   contexto de empilhamento próprio, então nenhum irmão consegue entrar
+   entre o fundo dele e a foto lá dentro.
+   O canvas do SVG é o palco (755.871 x 621.873) e o card tem 580 de
+   largura nesse mesmo canvas, então aqui o laço vale 755.871/580 = 130.323%
+   da largura do card, puxado 72.5/580 = 12.5% pra esquerda — o que o deixa
+   exatamente onde o Figma põe, sangrando pra fora dos dois lados. A altura
+   vem sozinha da proporção do próprio SVG. */
 .about__squiggle {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: -12.5%; /* -72.5 / 580 */
+  width: 130.323%; /* 755.871 / 580 */
   height: auto;
-  z-index: 0;
+  z-index: 1;
   max-width: none;
   display: block;
   overflow: visible;
