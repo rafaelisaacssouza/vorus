@@ -709,7 +709,8 @@ body {
    mesmo do JSON — quem anima daqui em diante é a timeline em
    js/about-reveal.js.
    O recorte da foto (overflow hidden) fica no .about__dog-clip. O laço e a
-   palavra são irmãos deste card no palco e ficam por cima dele. */
+   palavra são irmãos deste card no palco: o laço passa por trás dele
+   (z-index 0) e a palavra por cima (z-index 2). */
 .about__dog {
   position: absolute;
   top: 0;
@@ -721,6 +722,8 @@ body {
   background: var(--cor-laranja-hover);
   border-radius: 16px; /* igual ao JSON; % aqui daria cantos elípticos */
   transform: scale(0.8);
+  /* Acima do laço: a fita passa POR TRÁS do card (só sangra pra fora dele). */
+  z-index: 1;
 }
 /* Laço: irmão do card no palco, como a palavra, pra não herdar o scale da
    entrada do card. O canvas dele É o palco (755.871 x 621.873), então ocupa
@@ -732,7 +735,7 @@ body {
   left: 0;
   width: 100%;
   height: auto;
-  z-index: 1;
+  z-index: 0;
   max-width: none;
   display: block;
   overflow: visible;
@@ -1286,8 +1289,8 @@ body {
 .feed-well__heading {
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: var(--fs-h2);
-  line-height: 0.98;
+  font-size: clamp(28px, 19px + 2.5vw, 53px);
+  line-height: 1.02;
   letter-spacing: -0.01em;
   color: var(--cor-vinho);
   margin-bottom: 19.2px;
