@@ -372,6 +372,122 @@
       </div>
     </section>
 
+    <!-- ============ Filme Vórus — 3 PROPOSTAS (escolher uma e apagar as outras) ============
+         Todas usam o mesmo arquivo (assets/video/vorus-filme.mp4). O vídeo de
+         fundo roda mudo e em loop só enquanto está na tela (js/film.js); o
+         som fica no botão / no lightbox. -->
+
+    <!-- ---------- Opção A: janela que expande no scroll ---------- -->
+    <section class="film-a" id="filme" data-film-variant="A">
+      <div class="film-a__pin">
+        <div class="film-a__head">
+          <div class="eyebrow eyebrow--dot">O filme</div>
+          <h2 class="section-heading film-a__title">
+            Se eu pudesse <span class="film-a__script">escolher</span>
+          </h2>
+        </div>
+        <div class="film-a__frame">
+          <video
+            class="film-a__video js-film-bg"
+            src="assets/video/vorus-filme.mp4"
+            poster="assets/video/vorus-filme-poster.jpg"
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
+          <div class="film-a__shade"></div>
+          <button class="film-sound js-film-sound" type="button">
+            <span class="film-sound__icon" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="film-sound__label">Ativar som</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Opção B: vinho, cortina + botão giratório ---------- -->
+    <section class="film-b" data-film-variant="B">
+      <div class="container film-b__inner">
+        <div class="film-b__text">
+          <div class="eyebrow eyebrow--on-dark">Assista</div>
+          <h2 class="section-heading section-heading--on-dark">
+            Quem cuida, <br />pede Vórus.
+          </h2>
+          <p class="section-lead section-lead--on-dark">
+            Um minuto sobre o que a gente acredita: cada refeição é uma forma
+            de cuidar.
+          </p>
+          <span class="film-b__time">01:12 · com som</span>
+        </div>
+        <div class="film-b__media">
+          <div class="film-b__frame">
+            <video
+              class="film-b__video js-film-bg"
+              src="assets/video/vorus-filme.mp4"
+              poster="assets/video/vorus-filme-poster.jpg"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+          </div>
+          <button class="film-play js-film-open" type="button" aria-label="Assistir ao filme com som">
+            <svg class="film-play__ring" viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <path id="filmPlayCircle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+              </defs>
+              <text>
+                <textPath href="#filmPlayCircle" textLength="488" lengthAdjust="spacing">ASSISTA O FILME ★ ASSISTA O FILME ★</textPath>
+              </text>
+            </svg>
+            <span class="film-play__core" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Opção C: laranja, letreiro atrás + card que endireita ---------- -->
+    <section class="film-c" data-film-variant="C">
+      <div class="film-c__rows" aria-hidden="true">
+        <div class="film-c__row film-c__row--1">
+          <span>Quem cuida, pede Vórus ★ Quem cuida, pede Vórus ★ Quem cuida, pede Vórus ★</span>
+        </div>
+        <div class="film-c__row film-c__row--2">
+          <span>Se eu pudesse escolher ★ Se eu pudesse escolher ★ Se eu pudesse escolher ★</span>
+        </div>
+      </div>
+      <div class="container film-c__inner">
+        <button class="film-c__card js-film-open" type="button" aria-label="Assistir ao filme com som">
+          <video
+            class="film-c__video js-film-bg"
+            src="assets/video/vorus-filme.mp4"
+            poster="assets/video/vorus-filme-poster.jpg"
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
+          <span class="film-c__cta">
+            <span class="film-c__cta-dot" aria-hidden="true"></span>
+            Assistir com som
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Lightbox compartilhado (B e C) -->
+    <div class="film-modal" hidden>
+      <button class="film-modal__close" type="button" aria-label="Fechar vídeo">×</button>
+      <video
+        class="film-modal__video"
+        src="assets/video/vorus-filme.mp4"
+        poster="assets/video/vorus-filme-poster.jpg"
+        controls
+        playsinline
+        preload="none"
+      ></video>
+    </div>
+
     <!-- ============ Linha de produtos ============ -->
     <section class="products" id="produtos">
       <div class="container">
@@ -1103,6 +1219,7 @@
     <script src="js/product-cards.js"></script>
     <script src="js/footer-word.js"></script>
     <script src="js/text-reveal.js"></script>
+    <script src="js/film.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

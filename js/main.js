@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.VorusProductCards && window.VorusProductCards.init();
   window.VorusFooterWord && window.VorusFooterWord.init();
   window.VorusTextReveal && window.VorusTextReveal.init();
+  window.VorusFilm && window.VorusFilm.init();
 
   window.ScrollTrigger && ScrollTrigger.refresh();
 });
