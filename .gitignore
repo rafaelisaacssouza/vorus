@@ -2,3 +2,7 @@ node_modules/
 .DS_Store
 Thumbs.db
 update_resources/
+dist/
+
+# Vídeo original em alta (522 MB) — no site vai a versão comprimida
+assets/video/Filme Vorus {Plimper} alta.mp4

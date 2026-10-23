@@ -8,6 +8,9 @@
       name="description"
       content="Vórus, a marca pet da Cacal: nutrição de qualidade para cães e gatos, com mais de 60 anos de experiência em nutrição animal."
     />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/favicon-192.png" />
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -125,7 +128,7 @@
       </ul>
     </nav>
 
-    <!-- ============ Hero ============ -->
+    <!-- ============ Hero antigo: notas de estrutura ============ -->
     <!-- Estrutura em duas camadas independentes, igual ao elementor-*-2026-09-15.json:
          1) .hero__row — flex row-reverse, min-height:100vh, só com a coluna de
             arte (50% de largura). Como é a ÚNICA flex item, o row-reverse a
@@ -137,6 +140,11 @@
             simplesmente se sobrepõem, e cada uma responde à sua própria régua
             (viewport inteiro vs. container com padding) de forma 100% fluida,
             sem precisar de aspect-ratio nem de cálculo de largura manual. -->
+    <!-- ============ Hero (antigo) — desativado ============
+         Substituído pelo .hero-scene abaixo. Para voltar: descomente este
+         bloco, remova o .hero-scene e reative js/hero-burst.js (tag script
+         no fim da página + chamada em js/main.js). Os comentários internos
+         estão como <!~~ ~~> pra não fecharem este comentário antes da hora.
     <section class="hero" id="hero">
       <img
         class="hero__bg"
@@ -146,9 +154,9 @@
       />
 
       <div class="hero__row">
-        <!-- Shadow e splash já vêm exportados no MESMO canvas da foto
+        <!~~ Shadow e splash já vêm exportados no MESMO canvas da foto
              (666x768) — basta sobrepor em width:100%. Só o path/fita tem
-             canvas maior (766x855) e usa offset + escala pra sangrar. -->
+             canvas maior (766x855) e usa offset + escala pra sangrar. ~~>
         <div class="hero__deco" id="hero-art" aria-hidden="true">
           <img
             class="hero__shadow"
@@ -183,6 +191,45 @@
                 >Seja um Revendedor</a
               >
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <!-- ============ Hero ============
+         Foto da linha Vórus (cachorro e gato comendo) de fundo, cobrindo a
+         seção inteira. Um degradê creme na esquerda segura a leitura do
+         texto; no mobile a foto vai pro topo e o texto desce pra baixo dela. -->
+    <section class="hero-scene" id="hero">
+      <img
+        class="hero-scene__bg"
+        src="assets/img/hero-racao.webp"
+        alt="Gato e cachorro comendo ração Vórus, com as embalagens das linhas Essencial, Premium e Gatos ao fundo"
+        width="1678"
+        height="937"
+        fetchpriority="high"
+      />
+      <div class="container hero-scene__inner">
+        <div class="hero-scene__content">
+          <h1 class="hero__heading">
+            Quem<br />
+            pede,<br />
+            <span class="re">re</span><span class="pet">Pet.</span>
+          </h1>
+          <p class="hero__paragraph">
+            Quem ama, cuida. Quem cuida vai de Vórus. Produzida pela Cacal,
+            que há mais de 60 anos transforma conhecimento em nutrição de
+            qualidade, a Vórus une ingredientes selecionados e equilíbrio
+            nutricional para cuidar do seu pet todos os dias.
+          </p>
+          <div class="hero__actions">
+            <a href="#produtos" class="btn btn--primary"
+              >Conheça a Linha Vórus →</a
+            >
+            <a href="#distribuidores" class="btn btn--outline-vinho"
+              >Seja um Revendedor</a
+            >
           </div>
         </div>
       </div>
@@ -734,7 +781,8 @@
               alt=""
             />
             <div class="stat-card__number">
-              <span class="stat-card__suffix">+</span>60
+              <span class="stat-card__suffix stat-card__suffix--plus">+</span
+              ><span class="stat-card__value" data-count="60">60</span>
             </div>
             <p class="stat-card__label">
               anos de experiência em nutrição animal
@@ -746,7 +794,9 @@
               src="assets/img/ilustracao-filhote.png"
               alt=""
             />
-            <div class="stat-card__number">3</div>
+            <div class="stat-card__number">
+              <span class="stat-card__value" data-count="3">3</span>
+            </div>
             <p class="stat-card__label">linhas de produtos</p>
           </div>
           <div class="stat-card">
@@ -756,7 +806,8 @@
               alt=""
             />
             <div class="stat-card__number">
-              26<span class="stat-card__suffix">%</span>
+              <span class="stat-card__value" data-count="26">26</span
+              ><span class="stat-card__suffix">%</span>
             </div>
             <p class="stat-card__label">de proteína na linha Gatos</p>
           </div>
@@ -797,9 +848,9 @@
           </h2>
           <p class="tribe__lead">
             Dicas de cuidado, novidades da linha e o dia a dia de quem já é da
-            Tribo Vórus. Marque suas fotos com a hashtag e apareça por lá.
+            Tribo Vórus.
           </p>
-          <p class="tribe__hashtag">#VaiDeVórus</p>
+          <p class="tribe__hashtag">Vem conhecer a Vórus!</p>
         </div>
 
         <!-- Posts reais do @cooperativacacal, via embed oficial do Instagram
@@ -1213,13 +1264,14 @@
     <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/gsap@3/dist/CustomEase.min.js"></script>
     <script src="js/nav.js"></script>
-    <script src="js/hero-burst.js"></script>
+    <!-- Hero antigo desativado: js/hero-burst.js não é mais carregado -->
     <script src="js/about-reveal.js"></script>
     <script src="js/diff-cards.js"></script>
     <script src="js/product-cards.js"></script>
     <script src="js/footer-word.js"></script>
     <script src="js/text-reveal.js"></script>
     <script src="js/film.js"></script>
+    <script src="js/stat-counter.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

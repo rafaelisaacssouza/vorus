@@ -645,6 +645,116 @@ body {
 }
 
 /* =========================================================
+   Hero novo (.hero-scene) — foto de fundo + texto na esquerda.
+   O .hero antigo acima ficou sem uso (HTML comentado); os estilos
+   .hero__heading / .hero__paragraph / .hero__actions continuam valendo
+   e são reaproveitados aqui.
+   ========================================================= */
+.hero-scene {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  /* Mesma conta do hero antigo: marquee + header + hero = 100vh. */
+  height: calc(100vh - var(--header-height) - var(--marquee-height));
+  min-height: 560px;
+  background: var(--cor-creme);
+  overflow: hidden;
+}
+.hero-scene__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Puxa o enquadramento pra direita: os pets e as embalagens ficam
+     visíveis e a esquerda (onde entra o texto) é a que corta primeiro. */
+  object-position: 70% 50%;
+  z-index: -2;
+}
+/* Degradê creme da esquerda pra direita: segura a leitura do texto
+   vinho sem esconder os pets. */
+.hero-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(253, 245, 232, 0.97) 0%,
+    rgba(253, 245, 232, 0.9) 30%,
+    rgba(253, 245, 232, 0.55) 46%,
+    rgba(253, 245, 232, 0) 62%
+  );
+}
+/* Desktop: a foto anda pra direita pras 3 embalagens ocuparem do ~31% da
+   tela até a borda direita. Na foto, elas vão de 18,5% a 83,7% da
+   largura; com 105% de largura e left 12% caem em ~31% → ~100%.
+   A faixa vazia da esquerda fica sob o degradê creme, e a máscara apaga
+   a borda da foto pra não aparecer o corte. */
+@media (min-width: 1201px) {
+  .hero-scene__bg {
+    left: 12%;
+    width: 105%;
+    object-position: 50% 50%;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%);
+    mask-image: linear-gradient(90deg, transparent, #000 12%);
+  }
+}
+.hero-scene__inner {
+  width: 100%;
+}
+.hero-scene__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 520px;
+}
+
+@media (max-width: 1200px) {
+  .hero-scene::before {
+    background: linear-gradient(
+      90deg,
+      rgba(253, 245, 232, 0.97) 0%,
+      rgba(253, 245, 232, 0.92) 40%,
+      rgba(253, 245, 232, 0.6) 58%,
+      rgba(253, 245, 232, 0) 78%
+    );
+  }
+}
+
+/* Mobile/tablet: a foto sai do fundo e vai pro topo, inteira (16:9),
+   esmaecendo no creme; o texto desce pra baixo dela. */
+@media (max-width: 900px) {
+  .hero-scene {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    min-height: 0;
+  }
+  .hero-scene::before {
+    display: none;
+  }
+  .hero-scene__bg {
+    position: relative;
+    inset: auto;
+    height: auto;
+    aspect-ratio: 1678 / 937;
+    object-position: 50% 50%;
+    z-index: 0;
+    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent);
+    mask-image: linear-gradient(to bottom, #000 82%, transparent);
+  }
+  .hero-scene__inner {
+    padding-block: 24px 56px;
+  }
+  .hero-scene__content {
+    max-width: none;
+  }
+}
+
+/* =========================================================
    Cuidar vai além de alimentar
    ========================================================= */
 .about {
@@ -1267,9 +1377,22 @@ body {
   font-weight: 900;
   font-size: var(--fs-stat-suffix);
   color: var(--cor-branco);
-  margin-top: 0.15em;
+  line-height: 1;
+  margin-top: 0.1em;
+}
+/* O "+" da fonte é bem menor que o "%"; aumenta pra os dois pesarem igual */
+.stat-card__suffix--plus {
+  font-size: calc(var(--fs-stat-suffix) * 1.4);
+  margin-top: 0;
+  margin-right: 0.04em;
+}
+.stat-card__value {
+  display: inline-block;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 .stat-card__label {
+  text-wrap: balance;
   font-family: var(--font-condensed);
   font-weight: 700;
   font-size: var(--fs-body);

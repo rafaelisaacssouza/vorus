@@ -7,13 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  window.VorusHeroBurst && window.VorusHeroBurst.init();
+  // Hero antigo desativado (ver index.html):
+  // window.VorusHeroBurst && window.VorusHeroBurst.init();
   window.VorusAboutReveal && window.VorusAboutReveal.init();
   window.VorusDiffCards && window.VorusDiffCards.init();
   window.VorusProductCards && window.VorusProductCards.init();
   window.VorusFooterWord && window.VorusFooterWord.init();
   window.VorusTextReveal && window.VorusTextReveal.init();
   window.VorusFilm && window.VorusFilm.init();
+  window.VorusStatCounter && window.VorusStatCounter.init();
 
   window.ScrollTrigger && ScrollTrigger.refresh();
 });

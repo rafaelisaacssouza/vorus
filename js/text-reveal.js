@@ -7,6 +7,7 @@
 // esses elementos não estão nos seletores abaixo.
 const TEXT_REVEAL_GROUPS = [
   ".hero__content",
+  ".hero-scene__content",
   ".about__text",
   ".products__head",
   ".differentials__head",
