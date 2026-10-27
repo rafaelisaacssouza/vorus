@@ -95,9 +95,11 @@ ul {
   --cor-pill-bg: #f5e8c8;
   --cor-vinho: #5c001a;
   --cor-marrom-escuro: #3d1505;
-  --cor-laranja: #e35f10;
-  --cor-laranja-hover: #e46a21;
-  --cor-laranja-escuro: #c94e08;
+  /* Laranjas com saturação 100% e um pouco mais de luz (mesmo matiz).
+     Antes: #e35f10 / #e46a21 / #c94e08. */
+  --cor-laranja: #ff640a;
+  --cor-laranja-hover: #ff751f;
+  --cor-laranja-escuro: #e05200;
   --cor-texto-corpo: #6b5d52;
   --cor-dourado: #d4900a;
   --cor-branco: #ffffff;
@@ -658,7 +660,7 @@ body {
   /* Mesma conta do hero antigo: marquee + header + hero = 100vh. */
   height: calc(100vh - var(--header-height) - var(--marquee-height));
   min-height: 560px;
-  background: var(--cor-creme);
+  background: var(--cor-marrom-escuro);
   overflow: hidden;
 }
 .hero-scene__bg {
@@ -672,8 +674,8 @@ body {
   object-position: 70% 50%;
   z-index: -2;
 }
-/* Degradê creme da esquerda pra direita: segura a leitura do texto
-   vinho sem esconder os pets. */
+/* Degradê marrom da esquerda pra direita: segura a leitura do texto
+   branco sem esconder os pets. */
 .hero-scene::before {
   content: "";
   position: absolute;
@@ -681,28 +683,19 @@ body {
   z-index: -1;
   background: linear-gradient(
     90deg,
-    rgba(253, 245, 232, 0.97) 0%,
-    rgba(253, 245, 232, 0.9) 30%,
-    rgba(253, 245, 232, 0.55) 46%,
-    rgba(253, 245, 232, 0) 62%
+    rgba(61, 21, 5, 0.92) 0%,
+    rgba(61, 21, 5, 0.8) 30%,
+    rgba(61, 21, 5, 0.45) 46%,
+    rgba(61, 21, 5, 0) 62%
   );
-}
-/* Desktop: a foto anda pra direita pras 3 embalagens ocuparem do ~31% da
-   tela até a borda direita. Na foto, elas vão de 18,5% a 83,7% da
-   largura; com 105% de largura e left 12% caem em ~31% → ~100%.
-   A faixa vazia da esquerda fica sob o degradê creme, e a máscara apaga
-   a borda da foto pra não aparecer o corte. */
-@media (min-width: 1201px) {
-  .hero-scene__bg {
-    left: 12%;
-    width: 105%;
-    object-position: 50% 50%;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%);
-    mask-image: linear-gradient(90deg, transparent, #000 12%);
-  }
 }
 .hero-scene__inner {
   width: 100%;
+}
+/* Texto do hero em branco sobre o marrom (o "rePet." segue laranja). */
+.hero-scene .hero__heading,
+.hero-scene .hero__paragraph {
+  color: var(--cor-branco);
 }
 .hero-scene__content {
   display: flex;
@@ -716,16 +709,16 @@ body {
   .hero-scene::before {
     background: linear-gradient(
       90deg,
-      rgba(253, 245, 232, 0.97) 0%,
-      rgba(253, 245, 232, 0.92) 40%,
-      rgba(253, 245, 232, 0.6) 58%,
-      rgba(253, 245, 232, 0) 78%
+      rgba(61, 21, 5, 0.92) 0%,
+      rgba(61, 21, 5, 0.85) 40%,
+      rgba(61, 21, 5, 0.5) 58%,
+      rgba(61, 21, 5, 0) 78%
     );
   }
 }
 
 /* Mobile/tablet: a foto sai do fundo e vai pro topo, inteira (16:9),
-   esmaecendo no creme; o texto desce pra baixo dela. */
+   esmaecendo no marrom; o texto desce pra baixo dela. */
 @media (max-width: 900px) {
   .hero-scene {
     flex-direction: column;
@@ -740,7 +733,7 @@ body {
     position: relative;
     inset: auto;
     height: auto;
-    aspect-ratio: 1678 / 937;
+    aspect-ratio: 1672 / 941;
     object-position: 50% 50%;
     z-index: 0;
     -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent);
@@ -751,6 +744,14 @@ body {
   }
   .hero-scene__content {
     max-width: none;
+  }
+  /* O tamanho base veio do hero antigo (texto espremido ao lado da arte).
+     Aqui o texto ocupa a largura toda, então o título pode crescer. */
+  .hero-scene .hero__heading {
+    font-size: clamp(56px, 15vw, 96px);
+  }
+  .hero-scene .hero__heading .pet {
+    font-size: 1.06em;
   }
 }
 
@@ -1359,8 +1360,8 @@ body {
   height: clamp(96px, 12vw, 170px);
   object-fit: contain;
   /* Tinge as 3 ilustrações de laranja, seja qual for a cor original. */
-  filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(-15deg)
-    brightness(1.05);
+  filter: brightness(0) invert(1) sepia(1) saturate(8) hue-rotate(-15deg)
+    brightness(1.12);
 }
 .stat-card__number {
   display: flex;
@@ -1879,7 +1880,7 @@ body {
   transition: none;
 }
 .footer__line {
-  stroke: var(--cor-laranja-escuro); /* #C94E08 */
+  stroke: var(--cor-laranja-escuro); /* #E05200 */
   visibility: hidden;
 }
 /* Traços do Animaaal-path-footer.svg, na ordem do desenho (1 = i-n-a,
@@ -2194,10 +2195,20 @@ body {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
+  /* Espaçamento e botão escalam com a tela: o botão ocupa a largura toda
+     do card e o texto dele nunca quebra linha. */
   .distributors__banner-layer {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     text-align: left;
+    gap: clamp(16px, 5vw, 24px);
+    padding: clamp(24px, 6.5vw, 48px);
+  }
+  .distributors__banner-layer .btn {
+    width: 100%;
+    padding: clamp(12px, 3.6vw, 16px) clamp(10px, 3.5vw, 24px);
+    font-size: clamp(11px, 3.4vw, 15.2px);
+    letter-spacing: clamp(0.04em, 0.6vw, 0.1em);
   }
 
   .footer__grid {
@@ -2541,10 +2552,10 @@ body {
 }
 @keyframes film-pulse {
   from {
-    box-shadow: 0 0 0 0 rgba(227, 95, 16, 0.6);
+    box-shadow: 0 0 0 0 rgba(255, 100, 10, 0.6);
   }
   to {
-    box-shadow: 0 0 0 12px rgba(227, 95, 16, 0);
+    box-shadow: 0 0 0 12px rgba(255, 100, 10, 0);
   }
 }
 
